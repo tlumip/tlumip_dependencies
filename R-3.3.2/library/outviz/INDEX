@@ -1,0 +1,16 @@
+cut_volumes             Cut volumes into pretty levels
+link_stats_table        Link Statistics Table
+link_targets            Percent of links on target
+link_test               Construct a test call
+links                   Link output table
+mdd                     Maximum desirable deviation curve
+outviz                  outviz: A package for standardized model
+                        outputs
+pct_error               Calculate percent error
+pct_rmse                Calculate percent RMSE
+plot_mdd                Maximum desirable deviation plot
+plot_validation         Link validation plot
+refactor_levels         Refactor a variable so that it prints properly.
+rmse                    Calculate RMSE
+stat_smooth_func        Add function equation to statistical smoothing
+volume_levels           Cut a volumes variable into levels

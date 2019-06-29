@@ -1,0 +1,32 @@
+allocate_faf_to_zones   Allocate FAF daily truck flows to traffic
+                        analysis zones
+create_annual_faf_truckloads
+                        Generate annual truckload equivalents using
+                        FAF3 Traffic Analysis process
+create_makeuse_coefficients
+                        Create input-output make and use cofficients
+                        from PECAS AA accounts
+create_synthetic_firms
+                        Create synthetic pseudo-firms
+ct_msg                  Print a ct message
+export_trip_list        Export local and inter-regional trip records in
+                        a combined trip list file
+get_runtime_parameters
+                        Read the runtime parameters file and store them
+                        in environment
+local_truck_generation
+                        Generate local truck trips (tour segments) from
+                        pseudo-firms
+read_skim_matrices      Convert time and distance skim matrices in OMX
+                        format to data frame format
+sample_daily_faf_truckloads
+                        Sample daily FAF truck trips from annual FAF
+                        flow database
+sample_local_truck_destinations
+                        Simple destination choice model for local
+                        (internal) truck trips
+summarize_zonal_households
+                        Summarize number of households per traffic
+                        analysis zone
+temporal_allocation     Carry out temporal allocation for both
+                        intercity and local truck trips

@@ -1,0 +1,102 @@
+add_lookup              Add a geographic facet lookup to a database
+calc_exprate            Calculate exponential growth rate
+calc_grt                Calculate the growth rate in a vector
+calc_index              Calculate the indexed value of a vector
+change_leaflet          Leaflet plot of change over time in one
+                        scenario.
+change_popup            Build change popup tag for leaflet
+compare_employment      Compare labor output between two scenarios
+compare_floorspace      Compare floorspace over time
+compare_gdp             Compare GDP between two scenarios
+compare_logsums         Compare logsums from two scenarios
+compare_occupancy       Compare occupancy in a scenario over time.
+compare_sevar           Compare population and employment
+compare_tlfd            Compare Trip Length Frequency Distributions
+compare_trips           Compare Trips
+compare_vht             Compare VHT between scenarios
+compare_vmt             Compare VMT between scenarios
+compare_wapr            Compare workforce participation in two
+                        scenarios
+county_controls         County control totals
+cut_abserror            Cut absolute differences into ranges
+cut_diverror            Cut divergins percent error into ranges
+cut_error               Cut percent error into ranges
+cut_grt                 Cut growth rates into ranges
+diff_leaflet            Leaflet plot of difference between two
+                        scenarios.
+diff_popup              Build diff popup tag for leaflet
+discover_outlying_rates
+                        Discover outlying counties
+employment_types        Employment types
+extract_employment      Extract employment statistics from scenario
+extract_floorspace      Extract floorspace statistics from scenario
+extract_gdp             Extract GDP of Labor
+extract_logsums         Extract destination choice logsums
+extract_modelwide       Extract model-wide composite utilities
+extract_rents           Extract rent price
+extract_se              Extract SE data from DB
+extract_tlfd            Extract trip length frequency distribution data
+extract_trips           Extract trips from scenario
+extract_vht             Extract VHT
+extract_vmt             Extract VMT
+extract_volume          Extract floorspace volume
+extract_wapr            Extract labor force participation
+extract_zonedata        Extract se data for leaflet zone plots
+extract_zones           Get zones geometry from the database
+fac_types               Facility types
+floor_types             Floor types
+get_commute_times       Calculate trip times by residence region
+get_counts              Get counts table
+get_levels              Return all levels of a factor other than
+                        external stations
+get_skim                Process skim values from one zone.
+get_validation_table    Get comparison of link volumes to ATR count
+historical_pop          Historical county population
+interpolate_exponential
+                        Exponentially interpolate around two data
+                        points
+links                   Link table
+map_logsums             Map destination choice logsums from a single
+                        scenario
+mode_types              Consolidated transport modes
+multiple_employment     Compare Employment by sector across multiple
+                        scenarios.
+multiple_floorspace     Compare floorspace by type across multiple
+                        scenarios.
+multiple_gdp            Compare GDP across multiple scenarios.
+multiple_sevar          Compare Population or Employment across
+                        multiple scenarios.
+multiple_trips          Plot trips in multiple scenarios.
+multiple_vmt            Compare VMT between multiple scenarios
+multiple_wapr           Compare WAPR across multiple scenarios.
+pct_diff                Percent difference between two conditions
+plot_countcomparison    Plot base-year traffic validation.
+plot_employment         Plot Employment by Sector
+plot_floorspace         Plot floorspace statistics over time
+plot_gdp                Plot the GDP contribution of Labor over time in
+                        a scenario
+plot_history            Plot population with controls and historical
+                        data.
+plot_logsums            Plot average logsums over time for a single
+                        scenario
+plot_modelwide          Plot model wide parameters.
+plot_occupancy          Plot occupancy in a scenario over time.
+plot_rates              Plot annualized growth rates
+plot_sevar              Make a plot of population and employment
+plot_tlfd               Plot a trip length frequency distribution
+plot_traffic_count      Plot historical and projected traffic counts
+plot_trips              Plot Trip productions
+plot_vht                Plot VHT over time.
+plot_vmt                Plot VMT over time.
+plot_wapr               Plot the labor force participation rate.
+plot_wapr_volatility    Plot WAPR Volatility in a Region
+pop_rate                Determine annualized population growth rates.
+ref_counts              Reference counts
+regions                 Regions table
+remove_field            Remove a column from a database table
+skim_leaflet            Plot a skim chloropleth
+skim_popup              Build skim popup tag for leaflet
+troubleshoot_aa         AA Troubleshooter
+yearly_summary          Make a yearly summary table of a land use
+                        variable
+zone_leaflet            Construct a base leaflet zone plot

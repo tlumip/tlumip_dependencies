@@ -1,0 +1,40 @@
+*** Installation started 2014/11/07 13:55 ***
+Source: C:\Users\malinovskiyy\Downloads\python-dateutil-2.2.win-amd64-py2.7(1).exe
+999 Root Key: HKEY_LOCAL_MACHINE
+020 Reg DB Key: [Software\Microsoft\Windows\CurrentVersion\Uninstall]python-dateutil-py2.7
+040 Reg DB Value: [Software\Microsoft\Windows\CurrentVersion\Uninstall\python-dateutil-py2.7]DisplayName=Python 2.7 python-dateutil-2.2 (64-bit)
+040 Reg DB Value: [Software\Microsoft\Windows\CurrentVersion\Uninstall\python-dateutil-py2.7]UninstallString="C:\Program Files\Python27\Removepython-dateutil.exe" -u "C:\Program Files\Python27\python-dateutil-wininst.log"
+100 Made Dir: C:\Program Files\Python27\Lib\site-packages\dateutil
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\dateutil\easter.py
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\dateutil\parser.py
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\dateutil\relativedelta.py
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\dateutil\rrule.py
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\dateutil\tz.py
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\dateutil\tzwin.py
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\dateutil\__init__.py
+100 Made Dir: C:\Program Files\Python27\Lib\site-packages\dateutil\zoneinfo
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\dateutil\zoneinfo\zoneinfo--latest.tar.gz
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\dateutil\zoneinfo\__init__.py
+100 Made Dir: C:\Program Files\Python27\Lib\site-packages\python_dateutil-2.2-py2.7.egg-info
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\python_dateutil-2.2-py2.7.egg-info\dependency_links.txt
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\python_dateutil-2.2-py2.7.egg-info\not-zip-safe
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\python_dateutil-2.2-py2.7.egg-info\PKG-INFO
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\python_dateutil-2.2-py2.7.egg-info\requires.txt
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\python_dateutil-2.2-py2.7.egg-info\SOURCES.txt
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\python_dateutil-2.2-py2.7.egg-info\top_level.txt
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\dateutil\zoneinfo\__init__.pyc
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\dateutil\__init__.pyc
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\dateutil\tzwin.pyc
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\dateutil\tz.pyc
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\dateutil\rrule.pyc
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\dateutil\relativedelta.pyc
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\dateutil\parser.pyc
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\dateutil\easter.pyc
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\dateutil\zoneinfo\__init__.pyo
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\dateutil\__init__.pyo
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\dateutil\tzwin.pyo
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\dateutil\tz.pyo
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\dateutil\rrule.pyo
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\dateutil\relativedelta.pyo
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\dateutil\parser.pyo
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\dateutil\easter.pyo

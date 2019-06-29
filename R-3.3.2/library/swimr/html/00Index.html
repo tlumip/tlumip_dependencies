@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>R: Functions for Looking at Swim</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+<h1> Functions for Looking at Swim
+<img class="toplogo" src="../../../doc/html/Rlogo.svg" alt="[R logo]" />
+</h1>
+<hr/>
+<div style="text-align: center;">
+<a href="../../../doc/html/packages.html"><img class="arrow" src="../../../doc/html/left.jpg" alt="[Up]" /></a>
+<a href="../../../doc/html/index.html"><img class="arrow" src="../../../doc/html/up.jpg" alt="[Top]" /></a>
+</div><h2>Documentation for package &lsquo;swimr&rsquo; version 0.2.8</h2>
+
+<ul><li><a href="../DESCRIPTION">DESCRIPTION file</a>.</li>
+</ul>
+
+<h2>Help Pages</h2>
+
+
+<table width="100%">
+<tr><td style="width: 25%;"><a href="add_lookup.html">add_lookup</a></td>
+<td>Add a geographic facet lookup to a database</td></tr>
+<tr><td style="width: 25%;"><a href="calc_exprate.html">calc_exprate</a></td>
+<td>Calculate exponential growth rate</td></tr>
+<tr><td style="width: 25%;"><a href="calc_grt.html">calc_grt</a></td>
+<td>Calculate the growth rate in a vector</td></tr>
+<tr><td style="width: 25%;"><a href="calc_index.html">calc_index</a></td>
+<td>Calculate the indexed value of a vector</td></tr>
+<tr><td style="width: 25%;"><a href="change_leaflet.html">change_leaflet</a></td>
+<td>Leaflet plot of change over time in one scenario.</td></tr>
+<tr><td style="width: 25%;"><a href="change_popup.html">change_popup</a></td>
+<td>Build change popup tag for leaflet</td></tr>
+<tr><td style="width: 25%;"><a href="compare_employment.html">compare_employment</a></td>
+<td>Compare labor output between two scenarios</td></tr>
+<tr><td style="width: 25%;"><a href="compare_floorspace.html">compare_floorspace</a></td>
+<td>Compare floorspace over time</td></tr>
+<tr><td style="width: 25%;"><a href="compare_gdp.html">compare_gdp</a></td>
+<td>Compare GDP between two scenarios</td></tr>
+<tr><td style="width: 25%;"><a href="compare_logsums.html">compare_logsums</a></td>
+<td>Compare logsums from two scenarios</td></tr>
+<tr><td style="width: 25%;"><a href="compare_occupancy.html">compare_occupancy</a></td>
+<td>Compare occupancy in a scenario over time.</td></tr>
+<tr><td style="width: 25%;"><a href="compare_sevar.html">compare_sevar</a></td>
+<td>Compare population and employment</td></tr>
+<tr><td style="width: 25%;"><a href="compare_tlfd.html">compare_tlfd</a></td>
+<td>Compare Trip Length Frequency Distributions</td></tr>
+<tr><td style="width: 25%;"><a href="compare_trips.html">compare_trips</a></td>
+<td>Compare Trips</td></tr>
+<tr><td style="width: 25%;"><a href="compare_vht.html">compare_vht</a></td>
+<td>Compare VHT between scenarios</td></tr>
+<tr><td style="width: 25%;"><a href="compare_vmt.html">compare_vmt</a></td>
+<td>Compare VMT between scenarios</td></tr>
+<tr><td style="width: 25%;"><a href="compare_wapr.html">compare_wapr</a></td>
+<td>Compare workforce participation in two scenarios</td></tr>
+<tr><td style="width: 25%;"><a href="county_controls.html">county_controls</a></td>
+<td>County control totals</td></tr>
+<tr><td style="width: 25%;"><a href="cut_abserror.html">cut_abserror</a></td>
+<td>Cut absolute differences into ranges</td></tr>
+<tr><td style="width: 25%;"><a href="cut_diverror.html">cut_diverror</a></td>
+<td>Cut divergins percent error into ranges</td></tr>
+<tr><td style="width: 25%;"><a href="cut_error.html">cut_error</a></td>
+<td>Cut percent error into ranges</td></tr>
+<tr><td style="width: 25%;"><a href="cut_grt.html">cut_grt</a></td>
+<td>Cut growth rates into ranges</td></tr>
+<tr><td style="width: 25%;"><a href="diff_leaflet.html">diff_leaflet</a></td>
+<td>Leaflet plot of difference between two scenarios.</td></tr>
+<tr><td style="width: 25%;"><a href="diff_popup.html">diff_popup</a></td>
+<td>Build diff popup tag for leaflet</td></tr>
+<tr><td style="width: 25%;"><a href="discover_outlying_rates.html">discover_outlying_rates</a></td>
+<td>Discover outlying counties</td></tr>
+<tr><td style="width: 25%;"><a href="employment_types.html">employment_types</a></td>
+<td>Employment types</td></tr>
+<tr><td style="width: 25%;"><a href="extract_employment.html">extract_employment</a></td>
+<td>Extract employment statistics from scenario</td></tr>
+<tr><td style="width: 25%;"><a href="extract_floorspace.html">extract_floorspace</a></td>
+<td>Extract floorspace statistics from scenario</td></tr>
+<tr><td style="width: 25%;"><a href="extract_gdp.html">extract_gdp</a></td>
+<td>Extract GDP of Labor</td></tr>
+<tr><td style="width: 25%;"><a href="extract_logsums.html">extract_logsums</a></td>
+<td>Extract destination choice logsums</td></tr>
+<tr><td style="width: 25%;"><a href="extract_modelwide.html">extract_modelwide</a></td>
+<td>Extract model-wide composite utilities</td></tr>
+<tr><td style="width: 25%;"><a href="extract_rents.html">extract_rents</a></td>
+<td>Extract rent price</td></tr>
+<tr><td style="width: 25%;"><a href="extract_se.html">extract_se</a></td>
+<td>Extract SE data from DB</td></tr>
+<tr><td style="width: 25%;"><a href="extract_tlfd.html">extract_tlfd</a></td>
+<td>Extract trip length frequency distribution data</td></tr>
+<tr><td style="width: 25%;"><a href="extract_trips.html">extract_trips</a></td>
+<td>Extract trips from scenario</td></tr>
+<tr><td style="width: 25%;"><a href="extract_vht.html">extract_vht</a></td>
+<td>Extract VHT</td></tr>
+<tr><td style="width: 25%;"><a href="extract_vmt.html">extract_vmt</a></td>
+<td>Extract VMT</td></tr>
+<tr><td style="width: 25%;"><a href="extract_volume.html">extract_volume</a></td>
+<td>Extract floorspace volume</td></tr>
+<tr><td style="width: 25%;"><a href="extract_wapr.html">extract_wapr</a></td>
+<td>Extract labor force participation</td></tr>
+<tr><td style="width: 25%;"><a href="extract_zonedata.html">extract_zonedata</a></td>
+<td>Extract se data for leaflet zone plots</td></tr>
+<tr><td style="width: 25%;"><a href="extract_zones.html">extract_zones</a></td>
+<td>Get zones geometry from the database</td></tr>
+<tr><td style="width: 25%;"><a href="fac_types.html">fac_types</a></td>
+<td>Facility types</td></tr>
+<tr><td style="width: 25%;"><a href="floor_types.html">floor_types</a></td>
+<td>Floor types</td></tr>
+<tr><td style="width: 25%;"><a href="get_commute_times.html">get_commute_times</a></td>
+<td>Calculate trip times by residence region</td></tr>
+<tr><td style="width: 25%;"><a href="get_counts.html">get_counts</a></td>
+<td>Get counts table</td></tr>
+<tr><td style="width: 25%;"><a href="get_levels.html">get_levels</a></td>
+<td>Return all levels of a factor other than external stations</td></tr>
+<tr><td style="width: 25%;"><a href="get_skim.html">get_skim</a></td>
+<td>Process skim values from one zone.</td></tr>
+<tr><td style="width: 25%;"><a href="get_validation_table.html">get_validation_table</a></td>
+<td>Get comparison of link volumes to ATR count</td></tr>
+<tr><td style="width: 25%;"><a href="historical_pop.html">historical_pop</a></td>
+<td>Historical county population</td></tr>
+<tr><td style="width: 25%;"><a href="interpolate_exponential.html">interpolate_exponential</a></td>
+<td>Exponentially interpolate around two data points</td></tr>
+<tr><td style="width: 25%;"><a href="links.html">links</a></td>
+<td>Link table</td></tr>
+<tr><td style="width: 25%;"><a href="map_logsums.html">map_logsums</a></td>
+<td>Map destination choice logsums from a single scenario</td></tr>
+<tr><td style="width: 25%;"><a href="mode_types.html">mode_types</a></td>
+<td>Consolidated transport modes</td></tr>
+<tr><td style="width: 25%;"><a href="multiple_employment.html">multiple_employment</a></td>
+<td>Compare Employment by sector across multiple scenarios.</td></tr>
+<tr><td style="width: 25%;"><a href="multiple_floorspace.html">multiple_floorspace</a></td>
+<td>Compare floorspace by type across multiple scenarios.</td></tr>
+<tr><td style="width: 25%;"><a href="multiple_gdp.html">multiple_gdp</a></td>
+<td>Compare GDP across multiple scenarios.</td></tr>
+<tr><td style="width: 25%;"><a href="multiple_sevar.html">multiple_sevar</a></td>
+<td>Compare Population or Employment across multiple scenarios.</td></tr>
+<tr><td style="width: 25%;"><a href="multiple_trips.html">multiple_trips</a></td>
+<td>Plot trips in multiple scenarios.</td></tr>
+<tr><td style="width: 25%;"><a href="multiple_vmt.html">multiple_vmt</a></td>
+<td>Compare VMT between multiple scenarios</td></tr>
+<tr><td style="width: 25%;"><a href="multiple_wapr.html">multiple_wapr</a></td>
+<td>Compare WAPR across multiple scenarios.</td></tr>
+<tr><td style="width: 25%;"><a href="pct_diff.html">pct_diff</a></td>
+<td>Percent difference between two conditions</td></tr>
+<tr><td style="width: 25%;"><a href="plot_countcomparison.html">plot_countcomparison</a></td>
+<td>Plot base-year traffic validation.</td></tr>
+<tr><td style="width: 25%;"><a href="plot_employment.html">plot_employment</a></td>
+<td>Plot Employment by Sector</td></tr>
+<tr><td style="width: 25%;"><a href="plot_floorspace.html">plot_floorspace</a></td>
+<td>Plot floorspace statistics over time</td></tr>
+<tr><td style="width: 25%;"><a href="plot_gdp.html">plot_gdp</a></td>
+<td>Plot the GDP contribution of Labor over time in a scenario</td></tr>
+<tr><td style="width: 25%;"><a href="plot_history.html">plot_history</a></td>
+<td>Plot population with controls and historical data.</td></tr>
+<tr><td style="width: 25%;"><a href="plot_logsums.html">plot_logsums</a></td>
+<td>Plot average logsums over time for a single scenario</td></tr>
+<tr><td style="width: 25%;"><a href="plot_modelwide.html">plot_modelwide</a></td>
+<td>Plot model wide parameters.</td></tr>
+<tr><td style="width: 25%;"><a href="plot_occupancy.html">plot_occupancy</a></td>
+<td>Plot occupancy in a scenario over time.</td></tr>
+<tr><td style="width: 25%;"><a href="plot_rates.html">plot_rates</a></td>
+<td>Plot annualized growth rates</td></tr>
+<tr><td style="width: 25%;"><a href="plot_sevar.html">plot_sevar</a></td>
+<td>Make a plot of population and employment</td></tr>
+<tr><td style="width: 25%;"><a href="plot_tlfd.html">plot_tlfd</a></td>
+<td>Plot a trip length frequency distribution</td></tr>
+<tr><td style="width: 25%;"><a href="plot_traffic_count.html">plot_traffic_count</a></td>
+<td>Plot historical and projected traffic counts</td></tr>
+<tr><td style="width: 25%;"><a href="plot_trips.html">plot_trips</a></td>
+<td>Plot Trip productions</td></tr>
+<tr><td style="width: 25%;"><a href="plot_vht.html">plot_vht</a></td>
+<td>Plot VHT over time.</td></tr>
+<tr><td style="width: 25%;"><a href="plot_vmt.html">plot_vmt</a></td>
+<td>Plot VMT over time.</td></tr>
+<tr><td style="width: 25%;"><a href="plot_wapr.html">plot_wapr</a></td>
+<td>Plot the labor force participation rate.</td></tr>
+<tr><td style="width: 25%;"><a href="plot_wapr_volatility.html">plot_wapr_volatility</a></td>
+<td>Plot WAPR Volatility in a Region</td></tr>
+<tr><td style="width: 25%;"><a href="pop_rate.html">pop_rate</a></td>
+<td>Determine annualized population growth rates.</td></tr>
+<tr><td style="width: 25%;"><a href="ref_counts.html">ref_counts</a></td>
+<td>Reference counts</td></tr>
+<tr><td style="width: 25%;"><a href="regions.html">regions</a></td>
+<td>Regions table</td></tr>
+<tr><td style="width: 25%;"><a href="remove_field.html">remove_field</a></td>
+<td>Remove a column from a database table</td></tr>
+<tr><td style="width: 25%;"><a href="skim_leaflet.html">skim_leaflet</a></td>
+<td>Plot a skim chloropleth</td></tr>
+<tr><td style="width: 25%;"><a href="skim_popup.html">skim_popup</a></td>
+<td>Build skim popup tag for leaflet</td></tr>
+<tr><td style="width: 25%;"><a href="troubleshoot_aa.html">troubleshoot_aa</a></td>
+<td>AA Troubleshooter</td></tr>
+<tr><td style="width: 25%;"><a href="yearly_summary.html">yearly_summary</a></td>
+<td>Make a yearly summary table of a land use variable</td></tr>
+<tr><td style="width: 25%;"><a href="zone_leaflet.html">zone_leaflet</a></td>
+<td>Construct a base leaflet zone plot</td></tr>
+</table>
+</body></html>

@@ -1,0 +1,14 @@
+*** Installation started 2014/11/07 13:55 ***
+Source: C:\Users\malinovskiyy\Downloads\six-1.8.0.win-amd64-py2.7.exe
+999 Root Key: HKEY_LOCAL_MACHINE
+020 Reg DB Key: [Software\Microsoft\Windows\CurrentVersion\Uninstall]six-py2.7
+040 Reg DB Value: [Software\Microsoft\Windows\CurrentVersion\Uninstall\six-py2.7]DisplayName=Python 2.7 six-1.8.0 (64-bit)
+040 Reg DB Value: [Software\Microsoft\Windows\CurrentVersion\Uninstall\six-py2.7]UninstallString="C:\Program Files\Python27\Removesix.exe" -u "C:\Program Files\Python27\six-wininst.log"
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\six.py
+100 Made Dir: C:\Program Files\Python27\Lib\site-packages\six-1.8.0-py2.7.egg-info
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\six-1.8.0-py2.7.egg-info\dependency_links.txt
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\six-1.8.0-py2.7.egg-info\PKG-INFO
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\six-1.8.0-py2.7.egg-info\SOURCES.txt
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\six-1.8.0-py2.7.egg-info\top_level.txt
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\six.pyc
+200 File Copy: C:\Program Files\Python27\Lib\site-packages\six.pyo

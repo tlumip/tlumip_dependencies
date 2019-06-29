@@ -1,0 +1,34 @@
+Package: omxr
+Type: Package
+Title: Read and Write Open Matrix Files
+Version: 0.2.1
+Date: 2016-01-06
+Authors@R: c(
+    person("Brian", "Gregor", email = "", role = "aut"),
+    person("Ben", "Stabler", email = "", role = "aut"),
+    person("Greg", "Macfarlane", email = "gregmacfarlane@gmail.com", role = "cre") )
+Description: The Open Matrix (OMX) file type is an open specification for
+    sharing data from transportation models. The specification is built on HDF5;
+    APIs to read and write are available for Cube, Emme, Python, Java, and R.
+License: file LICENSE
+LazyData: TRUE
+Suggests: knitr
+VignetteBuilder: knitr
+biocViews: rhdf5, zlibbioc
+Imports: rhdf5, zlibbioc, tidyr, readr, dplyr, magrittr
+RoxygenNote: 5.0.1.9000
+Author: Brian Gregor [aut],
+  Ben Stabler [aut],
+  Greg Macfarlane [cre]
+Maintainer: Greg Macfarlane <gregmacfarlane@gmail.com>
+Built: R 3.3.2; ; 2016-11-16 19:09:06 UTC; windows
+RemoteType: github
+RemoteHost: https://api.github.com
+RemoteRepo: omxr
+RemoteUsername: gregmacfarlane
+RemoteRef: master
+RemoteSha: c53f5b389ed1fd509a1949e0cbcd9da7a843a3f6
+GithubRepo: omxr
+GithubUsername: gregmacfarlane
+GithubRef: master
+GithubSHA1: c53f5b389ed1fd509a1949e0cbcd9da7a843a3f6

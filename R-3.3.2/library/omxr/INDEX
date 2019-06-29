@@ -1,0 +1,14 @@
+convert_zmx             Convert ZMX to OMX
+create_omx              Create an OMX file
+get_omx_attr            Read OMX attributes
+list_omx                List the contents of an OMX file
+long_matrix             Transform a matrix into long format
+read_lookup             Function to read an OMX lookup
+read_omx                Read an OMX matrix
+read_selected_omx       Read a OMX matrix based on a lookup vector
+read_zmx                Read a PB ZMX file
+write_lookup            Function to write a lookup vector to an OMX
+                        file
+write_matrix_attr       Function to write matrix attribute
+write_omx               Function to write OMX matrix data
+write_zmx               Write a PB ZMX file

@@ -1,0 +1,35 @@
+Package: swimr
+Type: Package
+Title: Functions for Looking at Swim
+Version: 0.2.8
+Date: 2016-09-07
+Authors@R: c(
+  person("Greg", "Macfarlane", email = "macfarlaneg@pbworld.com", role = c("aut", "cre")),
+  person("Alex", "Bettinardi", email = "Alexander.O.BETTINARDI@odot.state.or.us", role = c("aut"))
+  )
+Description: This package collects several R functions that are used in
+    visualizing the Oregon Statewide Integrated Model (SWIM) outputs.
+License: file LICENSE
+LazyData: TRUE
+Depends: R (>= 3.1.2)
+Suggests: knitr
+Imports: zoo (>= 1.7.12), sp (>= 1.2.0), sf (>= 0.6-3), outviz,
+        ggplot2, dbplyr, dplyr, dbplyr, tidyr, omxr, lazyeval, stats,
+        RSQLite
+VignetteBuilder: knitr
+Remotes: gregmacfarlane/omxr, pbsag/outviz
+RoxygenNote: 6.1.0
+Author: Greg Macfarlane [aut, cre],
+  Alex Bettinardi [aut]
+Maintainer: Greg Macfarlane <macfarlaneg@pbworld.com>
+Built: R 3.3.2; ; 2019-03-22 18:43:48 UTC; windows
+RemoteType: github
+RemoteHost: https://api.github.com
+RemoteRepo: swimr
+RemoteUsername: landisrm
+RemoteRef: master
+RemoteSha: 61b1aeffd82c72d0cd7a26165d3fe28c6331b99b
+GithubRepo: swimr
+GithubUsername: landisrm
+GithubRef: master
+GithubSHA1: 61b1aeffd82c72d0cd7a26165d3fe28c6331b99b
