@@ -1,0 +1,28 @@
+==> 2019-05-29 19:24:02 <==
+# cmd: C:\Program Files\Anaconda2\Scripts\conda-script.py create -n swim python=2.7
++certifi-2016.2.28-py27_0
++pip-9.0.1-py27_1
++python-2.7.13-1
++setuptools-36.4.0-py27_1
++vc-9-0
++vs2008_runtime-9.00.30729.5054-0
++wheel-0.29.0-py27_0
++wincertstore-0.2-py27_0
+# create specs: ['python 2.7*']
+==> 2019-05-29 19:25:30 <==
+# cmd: C:\Program Files\Anaconda2\Scripts\conda-script.py install cytoolz pytables pandas numpy
++blas-1.0-mkl
++bzip2-1.0.6-vc9_3
++cytoolz-0.8.2-py27_0
++hdf5-1.8.17-vc9_0
++mkl-2017.0.3-0
++numexpr-2.6.2-np113py27_0
++numpy-1.13.1-py27_0
++pandas-0.20.3-py27_0
++pytables-3.4.2-np113py27_0
++python-dateutil-2.6.1-py27_0
++pytz-2017.2-py27_0
++six-1.10.0-py27_0
++toolz-0.8.2-py27_0
++zlib-1.2.11-vc9_0
+# install specs: ['cytoolz', 'pytables', 'pandas', 'numpy', u'python 2.7* (target=python-2.7.13-1.tar.bz2)']
