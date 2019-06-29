@@ -1,2 +1,3 @@
 # tlumip_dependencies
-tlumip dependencies 
+
+See https://github.com/tlumip/tlumip/wiki/Installation
