@@ -17,11 +17,16 @@ get_runtime_parameters
 local_truck_generation
                         Generate local truck trips (tour segments) from
                         pseudo-firms
+percent                 Calculate the percent value of a vector
+                        (stunning this isn't built-in to R)
+preprocess_faf4_database
+                        Transform FAF flow database distributed by FHWA
+                        into format for target year
 read_skim_matrices      Convert time and distance skim matrices in OMX
                         format to data frame format
 sample_daily_faf_truckloads
-                        Sample daily FAF truck trips from annual FAF
-                        flow database
+                        Sample daily truck trips from annual FAF flow
+                        database
 sample_local_truck_destinations
                         Simple destination choice model for local
                         (internal) truck trips

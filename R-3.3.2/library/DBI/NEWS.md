@@ -1,3 +1,164 @@
+# DBI 1.1.0
+
+## New features
+
+- New `DBIConnector` class (#280).
+
+- Specify `immediate` argument to `dbSendQuery()`, `dbGetQuery()`, `dbSendStatement()` and `dbExecute()` (#268).
+
+- Use specification for `dbGetInfo()` (#271).
+
+- `dbUnquoteIdentifier()` now supports `Id()` objects with `catalog` members (#266, @raffscallion). It also handles unquoted identifiers of the form `table`, `schema.table` or `catalog.schema.table`, for compatibility with dbplyr.
+
+
+## Documentation
+
+- New DBI intro article (#286, @cutterkom).
+
+- Add pkgdown reference index (#288).
+
+- DBI specification on https://dbi.r-dbi.org/dev/articles/spec now comes with a table of contents and code formatting.
+
+- Update examples to refer to `params` instead of `param` (#235).
+
+- Improved documentation for `sqlInterpolate()` (#100). Add usage of `SQL()` to `sqlInterpolate()` examples (#259, @renkun-ken).
+
+- Improve documentation for `Id`.
+
+
+## Internal
+
+- Add tests for `dbUnquoteIdentifier()` (#279, @baileych).
+
+- `sqlInterpolate()` uses `dbQuoteLiteral()` instead of checking the type of the input.
+
+- Avoid partial argument match in `dbWriteTable()` (#246, @richfitz).
+
+
+# DBI 1.0.0 (2018-05-02)
+
+## New generics
+
+- New `dbAppendTable()` that by default calls `sqlAppendTableTemplate()` and then `dbExecute()` with a `param` argument, without support for `row.names` argument (#74).
+- New `dbCreateTable()` that by default calls `sqlCreateTable()` and then `dbExecute()`, without support for `row.names` argument (#74).
+- New `dbCanConnect()` generic with default implementation (#87).
+- New `dbIsReadOnly()` generic with default implementation (#190, @anhqle).
+
+## Changes
+
+- `sqlAppendTable()` now accepts lists for the `values` argument, to support lists of `SQL` objects in R 3.1.
+- Add default implementation for `dbListFields(DBIConnection, Id)`, this relies on `dbQuoteIdentifier(DBIConnection, Id)` (#75).
+
+## Documentation updates
+
+- The DBI specification vignette is rendered correctly from the installed package (#234).
+- Update docs on how to cope with stored procedures (#242, @aryoda).
+- Add "Additional arguments" sections and more examples for `dbGetQuery()`, `dbSendQuery()`, `dbExecute()` and `dbSendStatement()`.
+- The `dbColumnInfo()` method is now fully specified (#75).
+- The `dbListFields()` method is now fully specified (#75).
+- The dynamic list of methods in help pages doesn't contain methods in DBI anymore.
+
+## Bug fixes
+
+- Pass missing `value` argument to secondary `dbWriteTable()` call (#737, @jimhester).
+- The `Id` class now uses `<Id>` and not `<Table>` when printing.
+- The default `dbUnquoteIdentifier()` implementation now complies to the spec.
+
+
+# DBI 0.8 (2018-02-24)
+
+Breaking changes
+----------------
+
+- `SQL()` now strips the names from the output if the `names` argument is unset.
+- The `dbReadTable()`, `dbWriteTable()`, `dbExistsTable()`, `dbRemoveTable()`, and `dbListFields()` generics now specialize over the first two arguments to support implementations with the `Id` S4 class as type for the second argument. Some packages may need to update their documentation to satisfy R CMD check again.
+
+New generics
+------------
+
+- Schema support: Export `Id()`, new generics `dbListObjects()` and `dbUnquoteIdentifier()`, methods for `Id` that call `dbQuoteIdentifier()` and then forward (#220).
+- New `dbQuoteLiteral()` generic. The default implementation uses switchpatch to avoid dispatch ambiguities, and forwards to `dbQuoteString()` for character vectors. Backends may override methods that also dispatch on the second argument, but in this case also an override for the `"SQL"` class is necessary (#172).
+
+Default implementations
+-----------------------
+
+- Default implementations of `dbQuoteIdentifier()` and `dbQuoteLiteral()` preserve names, default implementation of `dbQuoteString()` strips names (#173).
+- Specialized methods for `dbQuoteString()` and `dbQuoteIdentifier()` are available again, for compatibility with clients that use `getMethod()` to access them (#218).
+- Add default implementation of `dbListFields()`.
+- The default implementation of `dbReadTable()` now has `row.names = FALSE` as default and also supports `row.names = NULL` (#186).
+
+API changes
+-----------
+
+- The `SQL()` function gains an optional `names` argument which can be used to assign names to SQL strings.
+
+Deprecated generics
+-------------------
+
+- `dbListConnections()` is soft-deprecated by documentation.
+- `dbListResults()` is deprecated by documentation (#58).
+- `dbGetException()` is soft-deprecated by documentation (#51).
+- The deprecated `print.list.pairs()` has been removed.
+
+Bug fixes
+---------
+
+- Fix `dbDataType()` for `AsIs` object (#198, @yutannihilation).
+- Fix `dbQuoteString()` and `dbQuoteIdentifier()` to ignore invalid UTF-8 strings (r-dbi/DBItest#156).
+
+Documentation
+-------------
+
+- Help pages for generics now contain a dynamic list of methods implemented by DBI backends (#162).
+- `sqlInterpolate()` now supports both named and positional variables (#216, @hannesmuehleisen).
+- Point to db.rstudio.com (@wibeasley, #209).
+- Reflect new 'r-dbi' organization in `DESCRIPTION` (@wibeasley, #207).
+
+Internal
+--------
+
+- Using switchpatch on the second argument for default implementations of `dbQuoteString()` and `dbQuoteIdentifier()`.
+
+
+# DBI 0.7 (2017-06-17)
+
+- Import updated specs from `DBItest`.
+- The default implementation of `dbGetQuery()` now accepts an `n` argument and forwards it to `dbFetch()`. No warning about pending rows is issued anymore (#76).
+- Require R >= 3.0.0 (for `slots` argument of `setClass()`) (#169, @mvkorpel).
+
+
+# DBI 0.6-1 (2017-04-01)
+
+- Fix `dbReadTable()` for backends that do not provide their own implementation (#171).
+
+
+# DBI 0.6 (2017-03-08)
+
+- Interface changes
+    - Deprecated `dbDriver()` and `dbUnloadDriver()` by documentation (#21).
+    - Renamed arguments to  `sqlInterpolate()` and `sqlParseVariables()` to be more consistent with the rest of the interface, and added `.dots` argument to `sqlParseVariables`. DBI drivers are now expected to implement `sqlParseVariables(conn, sql, ..., .dots)` and `sqlInterpolate(conn, sql, ...)` (#147).
+
+- Interface enhancements
+    - Removed `valueClass = "logical"` for those generics where the return value is meaningless, to allow backends to return invisibly (#135).
+    - Avoiding using braces in the definitions of generics if possible, so that standard generics can be detected (#146).
+    - Added default implementation for `dbReadTable()`.
+    - All standard generics are required to have an ellipsis (with test), for future extensibility.
+    - Improved default implementation of `dbQuoteString()` and `dbQuoteIdentifier()` (#77).
+    - Removed `tryCatch()` call in `dbGetQuery()` (#113).
+
+- Documentation improvements
+    - Finalized first draft of DBI specification, now in a vignette.
+    - Most methods now draw documentation from `DBItest`, only those where the behavior is not finally decided don't do this yet yet.
+    - Removed `max.connections` requirement from documentation (#56).
+    - Improved `dbBind()` documentation and example (#136).
+    - Change `omegahat.org` URL to `omegahat.net`, the particular document still doesn't exist below the new domain.
+
+- Internal
+    - Use roxygen2 inheritance to copy DBI specification to this package.
+    - Use `tic` package for building documentation.
+    - Use markdown in documentation.
+
+
 # DBI 0.5-1 (2016-09-09)
 
 - Documentation and example updates.

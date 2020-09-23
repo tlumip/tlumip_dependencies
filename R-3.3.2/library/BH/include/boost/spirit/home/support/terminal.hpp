@@ -13,6 +13,7 @@
 #pragma once
 #endif
 
+#include <boost/config.hpp>
 #include <boost/spirit/include/phoenix_core.hpp>
 #include <boost/spirit/include/phoenix_function.hpp>
 #include <boost/proto/proto.hpp>
@@ -261,6 +262,12 @@ namespace boost { namespace spirit
           : base_type(proto::terminal<Terminal>::type::make(t)) 
         {}
 
+#if defined(BOOST_MSVC)
+#pragma warning(push)
+// warning C4348: 'boost::spirit::terminal<...>::result_helper': redefinition of default parameter: parameter 3, 4
+#pragma warning(disable: 4348)
+#endif
+
         template <
             bool Lazy
           , typename A0
@@ -268,6 +275,10 @@ namespace boost { namespace spirit
           , typename A2 = unused_type
         >
         struct result_helper;
+
+#if defined(BOOST_MSVC)
+#pragma warning(pop)
+#endif
 
         template <
             typename A0
@@ -474,9 +485,8 @@ namespace boost { namespace spirit
               , phoenix::as_actor<A2>::convert(_2_));
         }
 
-    private:
         // silence MSVC warning C4512: assignment operator could not be generated
-        terminal& operator= (terminal const&);
+        BOOST_DELETED_FUNCTION(terminal& operator= (terminal const&))
     };
 
     ///////////////////////////////////////////////////////////////////////////
@@ -532,9 +542,8 @@ namespace boost { namespace spirit
 
             data_type data_;
 
-        private:
             // silence MSVC warning C4512: assignment operator could not be generated
-            stateful_tag& operator= (stateful_tag const&);
+            BOOST_DELETED_FUNCTION(stateful_tag& operator= (stateful_tag const&))
         };
     }
 
@@ -551,9 +560,8 @@ namespace boost { namespace spirit
           : spirit::terminal<tag_type>(data) 
         {}
 
-    private:
         // silence MSVC warning C4512: assignment operator could not be generated
-        stateful_tag_type& operator= (stateful_tag_type const&);
+        BOOST_DELETED_FUNCTION(stateful_tag_type& operator= (stateful_tag_type const&))
     };
 
     namespace detail

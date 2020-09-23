@@ -1,29 +1,33 @@
 Package: forcats
 Title: Tools for Working with Categorical Variables (Factors)
-Version: 0.1.1
-Authors@R: c(
-    person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre")),
-    person("RStudio", role = "cph")
-  )
-Description: Helpers for reordering factor levels (including moving
-    specified levels to front, ordering by first appearance, reversing, and
-    randomly shuffling), and tools for modifying factor levels (including
-    collapsing rare levels into other, 'anonymising', and manually 'recoding').
+Version: 0.5.0
+Authors@R: 
+    c(person(given = "Hadley",
+             family = "Wickham",
+             role = c("aut", "cre"),
+             email = "hadley@rstudio.com"),
+      person(given = "RStudio",
+             role = c("cph", "fnd")))
+Description: Helpers for reordering factor levels (including
+    moving specified levels to front, ordering by first appearance,
+    reversing, and randomly shuffling), and tools for modifying factor
+    levels (including collapsing rare levels into other, 'anonymising',
+    and manually 'recoding').
 License: GPL-3
+URL: http://forcats.tidyverse.org, https://github.com/tidyverse/forcats
+BugReports: https://github.com/tidyverse/forcats/issues
+Depends: R (>= 3.2)
+Imports: ellipsis, magrittr, rlang, tibble
+Suggests: covr, ggplot2, testthat, readr, knitr, rmarkdown, dplyr
 Encoding: UTF-8
 LazyData: true
-URL: https://hadley.github.io/forcats/,
-        https://github.com/hadley/forcats
-BugReports: https://github.com/hadley/forcats/issues
-Depends: R (>= 2.10)
-Imports: tibble, magrittr
-RoxygenNote: 5.0.1
-Suggests: ggplot2, testthat, covr
+RoxygenNote: 7.0.2
+VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2016-09-15 20:18:13 UTC; hadley
+Packaged: 2020-03-01 17:20:37 UTC; hadley
 Author: Hadley Wickham [aut, cre],
-  RStudio [cph]
+  RStudio [cph, fnd]
 Maintainer: Hadley Wickham <hadley@rstudio.com>
 Repository: CRAN
-Date/Publication: 2016-09-16 00:15:04
-Built: R 3.3.2; ; 2016-11-14 02:40:05 UTC; windows
+Date/Publication: 2020-03-01 18:10:02 UTC
+Built: R 3.3.2; ; 2020-09-04 21:35:13 UTC; windows

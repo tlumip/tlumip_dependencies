@@ -1,3 +1,212 @@
+# haven 2.3.1
+
+* Add missing methods so `median()`, `quantile()` and `summary()` work
+  once more (#520).
+  
+* Add missing cast methods (#522).
+
+# haven 2.3.0
+
+* `labelled()` gains the necessary support to work seemlessly in dplyr 1.0.0,
+  tidyr 1.0.0, and other packages that use vctrs (@mikmart, #496).
+
+* `labelled()` vectors now explicitly inherit from the corresponding base
+  types (e.g. integer, double, or character) (#509).
+
+* ReadStat update, including `read_sas()` supports for "any" encoding (#482),
+  and fixes for compiler warnings.
+
+# haven 2.2.0
+
+## Partial reading
+
+Thanks to the hard work of @mikmart, all `read_*()` functions gain three new arguments that allow you to read in only part of a large file:
+
+* `col_select`: selects columns to read with a tidyselect interface (#248).
+* `skip`: skips rows before reading data (#370).
+* `n_max`: limits the number of rows to read.
+
+This also brings with it a deprecation: `cols_only` in `read_sas()` has been deprecated in favour of the new `col_select` argument.
+
+## Minor improvements and bug fixes
+
+* `as_factor()` allows non-unique labels when `levels = "label"`. This fixes 
+  a particularly annoying printing bug (#424, @gergness)
+
+* `read_sas()` now supports (IS|E|B)8601(DT|DA|TM) date/time formats (@mikmart).
+
+* All `write_` functions gain a `.name_repair` argument that controls
+  what happens when the input dataset has repeated column names (#436).
+
+* All `write_` functions can now write labelled vectors with `NULL` labels 
+  (#442).
+
+* `write_dta()` can now write dataset labels with the `label` argument, 
+  which defaults to the `label` attribute of the input data frame, if present
+  (@gorcha, #449).
+
+* `write_dta()` works better with Stata 15, thanks to updated ReadStat (#461)
+
+# haven 2.1.1
+
+* Fixes for R CMD check
+
+# haven 2.1.0
+
+## Improved labelling
+
+`labelled` objects get pretty printing that shows the labels and NA values when inside of a `tbl_df`. Turn this behaviour off with behavior using `option(haven.show_pillar_labels = FALSE)` (#340, @gergness).
+
+`labelled()` and `labelled_spss()` now allow `NULL` labels. This makes both classes more flexible, allowing you to use them for their other attributes (#219).
+
+`labelled()` tests that value labels are unique (@larmarange, #364)
+
+## Minor improvements and bug fixes
+
+*   `as_factor()`:
+
+    * Is faster when input doesn't contain any missing values (@hughparsonage).
+    * Added `labelled` method for backward compatbility (#414).
+    * `data.frame` method now correctly passes `...` along (#407, @zkamvar).
+
+*   `write_dta()` now checks that the labelled values are integers, not the 
+    values themselves (#401).
+
+*   Updated to latest ReadStat from @evanmiller:
+
+    * `read_por()` can now read files from SPSS 25 (#412)
+    * `read_por()` now uses base-30 instead of base-10 for the exponent (#413)
+    * `read_sas()` can read zero column file (#420)
+    * `read_sav()` reads long strings (#381)
+    * `read_sav()` has greater memory limit allowing it to read more labels (#418)
+    * `read_spss()` reads long variable labels (#422)
+    * `write_sav()` no longer creates incorrect column names when >10k columns (#410)
+    * `write_sav()` no longer crashes when writing long label names (#395)
+  
+# haven 2.0.0
+
+## BREAKING CHANGES
+
+*   `labelled()` and `labelled_spss()` now produce objects with class
+    "haven_labelled" and "haven_labelled_spss". Previously, the "labelled"
+    class name clashed with the labelled class defined by Hmisc (#329).
+    
+    Unfortunately I couldn't come up with a way to fix this problem except
+    to change the class name; it seems reasonable that haven should be the one 
+    to change names given that Hmisc has been around much longer. This
+    will require some changes to packages that use haven, but shouldn't
+    affect user code.
+
+## Minor improvements
+
+* `labelled()` and `labelled_spss()` now support adding the `label`
+  attribute to the resulting object. The `label` is a short,
+  human-readable description of the object, and is now also used
+  when printing, and can be easily removed using the new `zap_label()`
+  function. (#362, @huftis)
+  
+  Previously, the `label` attribute was supported both when reading
+  and writing SPSS files, but it was not possible to actually create
+  objects in R having the `label` attribute using the constructors
+  `labelled()` or `labelled_spss()`.
+
+# haven 1.1.2
+
+* haven can read and write non-ASCII paths in R 3.5 (#371).
+
+* `labelled_spss` objects preserve their attributes when subsetted 
+  (#360, @gergness).
+
+* `read_sav()` gains an `encoding` argument to override the encoding stored in 
+  the file (#305). `read_sav()` can now read `.zsav` files (#338). 
+  
+* `write_*()` functions now invisibly return the input data frame 
+  (as documented) (#349, @austensen).
+
+* `write_dta()` allows non-ASCII variable labels for version 14 and above 
+  (#383). It also uses a less strict check for integers so that a 
+  labelled double containing only integer values can written (#343).
+
+* `write_sav()` produces `.zsav` files when `compress = TRUE` (#338).
+
+* `write_xpt()` can now set the "member" name, which defaults to the file name
+  san extension (#328).
+
+* Update to latest readstat.
+
+  * Fixes out of memory error (#342)
+  * Now supports reading and writing stata 15 files (#339)
+  * Negative integer labelled values were tagged as missing (#367)
+
+* Fix for when `as_factor()` with option `levels="labels"` is used on tagged NAs
+  (#340, @gergness)
+
+# haven 1.1.1
+
+* Update to latest readstat. Includes:
+
+  * SPSS: empty charater columns now read as character (#311)
+  * SPSS: now write long strings (#266)
+  * Stata: reorder labelled vectors on write (#327)
+  * State: `encoding` now affects value labels (#325)
+  * SAS: can now write wide/long rows (#272, #335).
+  * SAS: can now handle Windows Vietnamese character set (#336)
+
+* `read_por()` and `read_xpt()` now correctly preserve attributes if
+  output needs to be reallocated (which is typical behaviour) (#313)
+
+* `read_sas()` recognises date/times format with trailing separator and width
+  specifications (#324)
+  
+* `read_sas()` gains a `catalog_encoding` argument so you can independently
+  specify encoding of data and catalog (#312)
+
+* `write_*()` correctly measures lengths of non-ASCII labels (#258): this
+  fixes the cryptic error "A provided string value was longer than the 
+  available storage size of the specified column."
+
+* `write_dta()` now checks for bad labels in all columns, not just the first
+  (#326).
+
+* `write_sav()` no longer fails on empty factors or factors with an `NA`
+  level (#301) and writes out more metadata for `labelled_spss` vectors 
+  (#334).
+ 
+# haven 1.1.0
+
+* Update to latest readstat. Includes:
+
+  * SAS: support Win baltic code page (#231)
+  * SAS: better error messages instead of crashes (#234, #270)
+  * SAS: fix "unable to read error" (#271)
+  * SPSS: support uppercase time stamps (#230)
+  * SPSS: fixes for 252-255 byte strings (#226)
+  * SPSS: fixes for 0 byte strings (#245)
+
+* Share `as_factor()` with forcats package (#256)
+
+* `read_sav()` once again correctly returns system defined missings 
+  as `NA` (rather than `NaN`) (#223). `read_sav()` and `write_sav()` preserve 
+  SPSS's display widths (@ecortens).
+
+* `read_sas()` gains experimental `cols_only` argument to only read in 
+  specified columns (#248).
+
+* tibbles are created with `tibble::as_tibble()`, rather than by "hand" (#229).
+
+* `write_sav()` checks that factors don't have levels with >120 
+  characters (#262)
+
+* `write_dta()` no longer checks that all value labels are at most 32 
+  characters (since this is not a restriction of dta files) (#239).
+
+* All write methds now check that you're trying to write a data frame (#287).
+
+* Add support for reading (`read_xpt()`) and writing (`write_xpt()`) SAS 
+  transport files.
+
+* `write_*` functions turn ordered factors into labelled vectors (#285)
+
 # haven 1.0.0
 
 * The ReadStat library is stored in a subdirectory of `src` (#209, @krlmlr).

@@ -5,9 +5,11 @@ flatten	flatten
 fromJSON	fromJSON
 jsonlite	fromJSON
 minify	prettify
+parse_json	read_json
 prettify	prettify
 prettify, minify	prettify
-rbind.pages	rbind.pages
+rbind_pages	rbind_pages
+read_json	read_json
 serializeJSON	serializeJSON
 stream_in	stream_in
 stream_in, stream_out	stream_in
@@ -17,3 +19,4 @@ toJSON, fromJSON	fromJSON
 unbox	unbox
 unserializeJSON	serializeJSON
 validate	validate
+write_json	read_json

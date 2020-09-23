@@ -1,3 +1,181 @@
+# httr 1.4.2
+
+* Fix failing test.
+
+* `parse_url()` now refers to RFC3986 for the parsing of the URL's 
+  scheme, with a bit more permissive syntax (@ymarcon, #615).
+
+# httr 1.4.1
+
+* Remove the default `cainfo` option on Windows. Providing a CA bundle is not 
+  needed anymore because `curl` now uses the native schannel SSL backend.
+  For recent versions of libcurl, overriding the CA bundle actually breaks 
+  custom trust certificates on corporate networks. (@jeroen, #603)
+
+* `http_status()` now throws the correct error message if http status code is 
+  not in the list of known codes (@Javdat, #567).
+
+* `POST()` gains an example on how to use `encode = "raw"` for specific json
+  string body (@cderv, #563)
+
+* `RETRY()` now throws the correct error message if an error occurs during the 
+  request (@austin3dickey, #581).
+
+* `VERB()` and `RETRY()` now automatically uppercase methods (@patr1ckm, #571).
+
+# httr 1.4.0
+
+## OAuth
+
+OAuth2.0 has been made somewhat more flexible in order to support more websites:
+
+* `init_oauth2.0()` passes `use_basic_auth` onwards, enabling 
+   basic authentication for OAuth 2.0 (@peterhartman, #484).
+
+* `oauth2.0_token()` (and `init_oauth2.0()`) gains a `oob_value` argument 
+  that allows arbitrary values to be sent for the `request_uri` 
+  parameter during OOB flows (@ctrombley, #493).
+
+* `oauth2.0_token()` (and `init_oauth2.0()`) gain a new 
+  `query_authorize_extra` parameter make it possible to add extra query
+  parameters to the authorization URL. This is needed some APIs (e.g. fitbit)
+  (@cosmomeese, #503).
+
+* `oauth_endpoints()` contains updated urls for Yahoo (@ctrombley, #493)
+  and Vimeo (#491).
+
+* OAuth 2.0 token refresh gives a more informative error if it fails (#516).
+
+* Prior to token retrieval from on-disk cache, scopes are de-duplicated, 
+  sorted, and stripped of names before being hashed. This eliminates a 
+  source of hash mismatch that causes new tokens to be requested, even when
+  existing tokens had the necessary scope. (@jennybc, #495)
+
+Updates to demos:
+
+* The Facebook OAuth demo now uses device flow (#510). This allows you to
+  continue using the FB api from R under their new security policy.
+
+* A new Noun Project demo shows how to use one-legged OAuth1 (@cderv, #548).
+
+* The Vimeo demo has been updated from OAuth 1.0 to 2.0 (#491).
+
+## Minor changes and improvements
+
+* `cache_info()` now handles un-named flags, as illustrated by "private" when
+  the server returns "private, max-age = 0".
+
+* `parse_http_date()` gets a better default value for the `failure` argument 
+  so that reponses with unparseable dates can be printed without error
+  (@shrektan, #544).
+
+* `POST()` now uses 22 digits of precision for `body` list elements by default 
+  (@jmwerner, #490)
+
+* `RETRY()` now terminates on any successful request, regardless of the value 
+  of `terminate_on`. To return to the previous behaviour, set
+  `terminate_on_success = FALSE` (#522).
+
+* In `RETRY()` and `VERB()`, `HEAD` requests now succeed (#478, #499).
+
+* Encoding falls back to UTF-8 if not supplied and content-type parsing
+  fails (#500).
+
+* Non-http(s) headers are no longer parsed (@billdenney, #537). This makes it 
+  possible to use httr with protocols other than http, although this is not 
+  advised, and you're own your own.
+
+# httr 1.3.1
+
+* Re-enable on-disk caching (accidentally disabled in #457) (#475)
+
+# httr 1.3.0
+
+## API changes
+
+* Deprecated `safe_callback()` has been removed.
+
+* `is_interactive` argument to `init_oauth1.0()`, `init_oauth2.0()` and 
+  `oauth_listener()` has been deprecated, as the R session does not actually
+  need to be interactive.
+
+## New features
+
+* New `set_callback()` and `get_callback()` set and query callback functions 
+  that are called right before and after performing an HTTP request 
+  (@gaborcsardi, #409)
+
+* `RETRY()` now retries if an error occurs during the request (@asieira, #404),
+  and gains two new arguments:
+
+  * `terminate_on` gives you greater control over which status codes should
+     it stop retrying. (@asieira, #404) 
+
+  * `pause_min` allows for sub-second delays. (Use with caution! Generally the 
+    default is preferred.) (@r2evans)
+    
+  * If the server returns HTTP status code 429 and specifies a `retry-after` 
+    value, that value will now be used instead of exponential backoff with 
+    jitter, unless it's smaller than `pause_min`. (@nielsoledam, #472)
+
+## OAuth
+
+* New oauth cache files are always added to `.gitignore` and, if it exists, 
+  `.Rbuildignore`. Specifically, this now happens when option 
+  `httr_oauth_cache = TRUE` or user specifies cache file name explicitly. 
+  (@jennybc, #436)
+
+* `oauth_encode()` now handles UTF-8 characters correctly. 
+  (@yutannihilation, #424)
+
+* `oauth_app()` allows you to specify the `redirect_url` if you need to 
+  customise it. 
+  
+* `oauth_service_token()` gains a `sub` parameter so you can request
+  access on behalf of another user (#410), and accepts a character vector 
+  of `scopes` as was described in the documentation (#389).
+
+* `oauth_signature()` now normalises the URL as described in the OAuth1.0a
+  spec (@leeper, #435)
+
+* New `oauth2.0_authorize_url()` and `oauth2.0_access_token()` functions 
+  pull out parts of the OAuth process for reuse elsewhere (#457).
+
+* `oauth2.0_token()` gains three new arguments:
+
+    * `config_init` allows you to supply additional config for the initial 
+      request. This is needed for some APIs (e.g. reddit) which rate limit 
+      based on `user_agent` (@muschellij2, #363).
+      
+    * `client_credentials`, allows you to use the OAauth2 *Client Credential 
+      Grant*. See [RFC 6749](https://tools.ietf.org/html/rfc6749#section-4)
+      for details. (@cderv, #384)
+
+    * A `credentials` argument that allows you to customise the auth flow. 
+      For advanced used only (#457)
+
+* `is_interactive` argument to `init_oauth1.0()`, `init_oauth2.0()` and 
+  `oauth_listener()` has been deprecated, as the R session does not need
+  to be interactive.
+
+## Minor bug fixes and improvements
+  
+* `BROWSER()` prints a message telling you to browse to the URL if called
+  in a non-interactive session.
+
+* `find_cert_bundle()` will now correctly find cert bundle in "R_HOME/etc" 
+  (@jiwalker-usgs, #386).
+
+* You can now send lists containing `curl::form_data()` in the `body` of
+  requests with `encoding = "multipart". This makes it possible to specify the 
+  mime-type of individual components (#430).
+
+* `modify_url()` recognises more forms of empty queries. This eliminates a 
+  source of spurious trailing `?` and `?=` (@jennybc, #452).
+  
+* The `length()` method of the internal `path` class is no longer exported 
+  (#395).
+
 # httr 1.2.1
 
 * Fix bug with new cache creation code: need to check that 

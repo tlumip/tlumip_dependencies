@@ -15,7 +15,6 @@
 
 #include <boost/endian/conversion.hpp>
 #include <boost/endian/arithmetic.hpp>
-#include <boost/fusion/include/at.hpp>
 #include <boost/mpl/or.hpp>
 #include <boost/type_traits/is_integral.hpp>
 #include <boost/type_traits/is_enum.hpp>
@@ -30,13 +29,14 @@ namespace boost { namespace spirit { namespace x3
       : parser<binary_lit_parser<V, T, endian, bits> >
     {
         static bool const has_attribute = false;
+        typedef unused_type attribute_type;
 
         binary_lit_parser(V n_)
           : n(n_) {}
 
         template <typename Iterator, typename Context, typename Attribute>
         bool parse(Iterator& first, Iterator const& last
-          , Context& context, unused_type, Attribute& attr_param) const
+          , Context const& context, unused_type, Attribute& attr_param) const
         {
             x3::skip_over(first, last, context);
 
@@ -68,7 +68,7 @@ namespace boost { namespace spirit { namespace x3
 
         template <typename Iterator, typename Context, typename Attribute>
         bool parse(Iterator& first, Iterator const& last
-          , Context& context, unused_type, Attribute& attr_param) const
+          , Context const& context, unused_type, Attribute& attr_param) const
         {
             x3::skip_over(first, last, context);
 
