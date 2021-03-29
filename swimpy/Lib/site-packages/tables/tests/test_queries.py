@@ -11,11 +11,11 @@
 ########################################################################
 
 """Test module for queries on datasets."""
-from __future__ import absolute_import
 
 import re
 import sys
 import types
+import warnings
 import functools
 
 import numpy
@@ -27,8 +27,6 @@ from tables.tests.common import unittest
 from tables.tests.common import verbosePrint as vprint
 from tables.tests.common import PyTablesTestCase as TestCase
 
-import six
-from six.moves import range
 
 from numpy import (log10, exp, log, abs, sqrt, sin, cos, tan,
                    arcsin, arccos, arctan)
@@ -95,10 +93,10 @@ if hasattr(numpy, 'float16'):
 #    type_info['complex256'] = (numpy.complex256, complex)
 
 sctype_from_type = dict((type_, info[0])
-                        for (type_, info) in six.iteritems(type_info))
+                        for (type_, info) in type_info.items())
 """Maps PyTables types to NumPy scalar types."""
 nxtype_from_type = dict((type_, info[1])
-                        for (type_, info) in six.iteritems(type_info))
+                        for (type_, info) in type_info.items())
 """Maps PyTables types to Numexpr types."""
 
 heavy_types = frozenset(['uint8', 'int16', 'uint16', 'float32', 'complex64'])
@@ -118,7 +116,7 @@ def append_columns(classdict, shape=()):
 
     """
     heavy = common.heavy
-    for (itype, type_) in enumerate(sorted(six.iterkeys(type_info))):
+    for (itype, type_) in enumerate(sorted(type_info.keys())):
         if not heavy and type_ in heavy_types:
             continue  # skip heavy type in non-heavy mode
         colpos = itype + 1
@@ -217,7 +215,7 @@ def fill_table(table, shape, nrows):
     row, value = table.row, 0
     for nrow in range(nrows):
         data = numpy.arange(value, value + size).reshape(shape)
-        for (type_, sctype) in six.iteritems(sctype_from_type):
+        for (type_, sctype) in sctype_from_type.items():
             if not heavy and type_ in heavy_types:
                 continue  # skip heavy type in non-heavy mode
             colname = 'c_%s' % type_
@@ -360,7 +358,7 @@ def create_test_method(type_, op, extracond, func=None):
                 'lbound': left_bound,
                 'rbound': right_bound,
                 'func_bound': func_bound}
-    for (bname, bvalue) in six.iteritems(condvars):
+    for (bname, bvalue) in condvars.items():
         if type_ == 'string':
             bvalue = str_format % bvalue
         bvalue = nxtype_from_type[type_](bvalue)
@@ -427,7 +425,12 @@ def create_test_method(type_, op, extracond, func=None):
                 pyvars['c_extra'] = row['c_extra']
                 pyvars['c_idxextra'] = row['c_idxextra']
                 try:
-                    isvalidrow = eval(pycond, func_info, pyvars)
+                    with warnings.catch_warnings():
+                        warnings.filterwarnings(
+                            'ignore',
+                            'invalid value encountered in arc(cos|sin)',
+                            RuntimeWarning)
+                        isvalidrow = eval(pycond, func_info, pyvars)
                 except TypeError:
                     raise SilentlySkipTest(
                         "The Python type does not support the operation.")
@@ -500,11 +503,7 @@ def add_test_method(type_, op, extracond='', func=None):
     tmethod.__name__ = testfmt % testn
     # tmethod.__doc__ += numfmt % testn
     tmethod.__doc__ += testfmt % testn
-    if sys.version_info[0] < 3:
-        imethod = types.MethodType(tmethod, None, TableDataTestCase)
-    else:
-        imethod = tmethod
-    setattr(TableDataTestCase, tmethod.__name__, imethod)
+    setattr(TableDataTestCase, tmethod.__name__, tmethod)
     testn += 1
 
 # Create individual tests.  You may restrict which tests are generated
@@ -691,11 +690,7 @@ class ScalarTableUsageTestCase(ScalarTableMixin, BaseTableUsageTestCase):
 
         NIE = NotImplementedError
         self.assertRaises(NIE, self.table.where, 'c_complex128 > 0j')
-        if sys.version_info[0] < 3:
-            self.assertRaises(NIE, self.table.where, 'c_string + "a" > "abc"')
-        else:
-            self.assertRaises(NIE, self.table.where,
-                              'c_string + b"a" > b"abc"')
+        self.assertRaises(NIE, self.table.where, 'c_string + b"a" > b"abc"')
 
     def test_not_boolean(self):
         """Using a non-boolean condition."""
@@ -719,7 +714,7 @@ class ScalarTableUsageTestCase(ScalarTableMixin, BaseTableUsageTestCase):
 
         def where_with_locals():
             c_int32 = self.table.cols.c_bool  # this wouldn't cause an error
-            self.assertTrue(c_int32 is not None)
+            self.assertIsNotNone(c_int32)
             self.table.where('c_int32')
         self.assertRaises(TypeError, where_with_locals)
 
@@ -733,7 +728,7 @@ class ScalarTableUsageTestCase(ScalarTableMixin, BaseTableUsageTestCase):
         def where_with_locals():
             bound = 'foo'  # this wouldn't cause an error
             # silence pyflakes warnings
-            self.assertTrue(isinstance(bound, str))
+            self.assertIsInstance(bound, str)
             self.table.where('c_string > bound', {'bound': 0})
         self.assertRaises(NotImplementedError, where_with_locals)
 
@@ -741,7 +736,7 @@ class ScalarTableUsageTestCase(ScalarTableMixin, BaseTableUsageTestCase):
             global _gvar
             _gvar = 'foo'  # this wouldn't cause an error
             # silence pyflakes warnings
-            self.assertTrue(isinstance(_gvar, str))
+            self.assertIsInstance(_gvar, str)
             try:
                 self.table.where('c_string > _gvar', {'_gvar': 0})
             finally:
@@ -761,7 +756,7 @@ class ScalarTableUsageTestCase(ScalarTableMixin, BaseTableUsageTestCase):
         # Second scope: local variables.
         def where_whith_locals():
             col = self.table.cols.c_int32
-            self.assertTrue(col is not None)
+            self.assertIsNotNone(col)
             self.table.where('col')
         self.assertRaises(TypeError, where_whith_locals)
 
@@ -770,7 +765,7 @@ class ScalarTableUsageTestCase(ScalarTableMixin, BaseTableUsageTestCase):
             global _gvar
             _gvar = self.table.cols.c_int32
             # silence pyflakes warnings
-            self.assertTrue(_gvar is not None)
+            self.assertIsNotNone(_gvar)
             try:
                 self.table.where('_gvar')
             finally:

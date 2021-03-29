@@ -14,5 +14,5 @@ LazyData: true
 RoxygenNote: 7.1.1
 Remotes: gregmacfarlane/omxr
 NeedsCompilation: no
-Packaged: 2020-09-09 19:15:44 UTC; aditya.gore
-Built: R 3.3.2; ; 2020-09-09 19:16:02 UTC; windows
+Packaged: 2020-11-03 20:40:53 UTC; aditya.gore
+Built: R 3.3.2; ; 2020-11-03 20:41:14 UTC; windows

@@ -4,7 +4,7 @@ from binascii import hexlify
 from ctypes import *
 
 def bin(s):
-    return hexlify(memoryview(s)).upper()
+    return hexlify(memoryview(s)).decode().upper()
 
 # Each *simple* type that supports different byte orders has an
 # __ctype_be__ attribute that specifies the same type in BIG ENDIAN
@@ -16,11 +16,31 @@ def bin(s):
 class Test(unittest.TestCase):
     @unittest.skip('test disabled')
     def test_X(self):
-        print >> sys.stderr,  sys.byteorder
+        print(sys.byteorder, file=sys.stderr)
         for i in range(32):
             bits = BITS()
             setattr(bits, "i%s" % i, 1)
             dump(bits)
+
+    def test_slots(self):
+        class BigPoint(BigEndianStructure):
+            __slots__ = ()
+            _fields_ = [("x", c_int), ("y", c_int)]
+
+        class LowPoint(LittleEndianStructure):
+            __slots__ = ()
+            _fields_ = [("x", c_int), ("y", c_int)]
+
+        big = BigPoint()
+        little = LowPoint()
+        big.x = 4
+        big.y = 2
+        little.x = 2
+        little.y = 4
+        with self.assertRaises(AttributeError):
+            big.z = 42
+        with self.assertRaises(AttributeError):
+            little.z = 24
 
     def test_endian_short(self):
         if sys.byteorder == "little":
@@ -115,12 +135,12 @@ class Test(unittest.TestCase):
         s = c_float(math.pi)
         self.assertEqual(bin(struct.pack("f", math.pi)), bin(s))
         # Hm, what's the precision of a float compared to a double?
-        self.assertAlmostEqual(s.value, math.pi, 6)
+        self.assertAlmostEqual(s.value, math.pi, places=6)
         s = c_float.__ctype_le__(math.pi)
-        self.assertAlmostEqual(s.value, math.pi, 6)
+        self.assertAlmostEqual(s.value, math.pi, places=6)
         self.assertEqual(bin(struct.pack("<f", math.pi)), bin(s))
         s = c_float.__ctype_be__(math.pi)
-        self.assertAlmostEqual(s.value, math.pi, 6)
+        self.assertAlmostEqual(s.value, math.pi, places=6)
         self.assertEqual(bin(struct.pack(">f", math.pi)), bin(s))
 
     def test_endian_double(self):

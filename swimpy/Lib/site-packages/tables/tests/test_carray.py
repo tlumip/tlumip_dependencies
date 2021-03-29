@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from __future__ import print_function
-from __future__ import absolute_import
 import os
 import sys
 
@@ -16,7 +14,6 @@ from tables.tests import common
 from tables.tests.common import allequal
 from tables.tests.common import unittest, blosc_version
 from tables.tests.common import PyTablesTestCase as TestCase
-from six.moves import range
 
 
 class BasicTestCase(common.TempFileMixin, TestCase):
@@ -1104,7 +1101,7 @@ class ReadOutArgumentTests(common.TempFileMixin, TestCase):
         try:
             disk_array.read(0, self.size, 1, out_buffer)
         except ValueError as exc:
-            self.assertTrue('output array size invalid, got' in str(exc))
+            self.assertIn('output array size invalid, got', str(exc))
 
 
 class SizeOnDiskInMemoryPropertyTestCase(common.TempFileMixin, TestCase):
@@ -2112,14 +2109,10 @@ class BigArrayTestCase(common.TempFileMixin, TestCase):
         try:
             self.assertEqual(len(self.h5file.root.array), self.shape[0])
         except OverflowError:
-            # In python 2.4 calling "len(self.h5file.root.array)" raises
-            # an OverflowError also on 64bit platforms::
-            #   OverflowError: __len__() should return 0 <= outcome < 2**31
-            if sys.version_info[:2] > (2, 4):
-                # This can't be avoided in 32-bit platforms.
-                self.assertTrue(self.shape[0] > numpy.iinfo(int).max,
-                                "Array length overflowed but ``int`` "
-                                "is wide enough.")
+            # This can't be avoided in 32-bit platforms.
+            self.assertTrue(self.shape[0] > numpy.iinfo(int).max,
+                            "Array length overflowed but ``int`` "
+                            "is wide enough.")
 
     def test01_shape_reopen(self):
         """Check that the shape doesn't overflow after reopening."""

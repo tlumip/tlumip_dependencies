@@ -11,7 +11,6 @@
 ########################################################################
 
 """Test module for compatibility with plain HDF files."""
-from __future__ import absolute_import
 
 import os
 import shutil
@@ -24,8 +23,38 @@ from tables.tests import common
 from tables.tests.common import allequal
 from tables.tests.common import unittest, test_filename
 from tables.tests.common import PyTablesTestCase as TestCase
-import six
-from six.moves import range
+
+
+class PaddedArrayTestCase(common.TestFileMixin, TestCase):
+    """Test for H5T_COMPOUND (Table) datatype with padding.
+
+    Regression test for issue gh-734
+
+    itemsize.h5 was created with h5py with the array `expectedData` (see below)
+    in the table `/Test`:
+    'A' and 'B' are 4 + 4 bytes, with 8 bytes padding.
+
+    $ h5ls -v itemsize.h5
+    Test                     Dataset {3/3}
+    Location:  1:800
+    Links:     1
+    Storage:   48 logical bytes, 48 allocated bytes, 100.00% utilization
+    Type:      struct {
+                   "A"                +0    native unsigned int
+                   "B"                +4    native unsigned int
+               } 16 bytes
+
+    """
+    h5fname = test_filename('itemsize.h5')
+
+    def test(self):
+        arr = self.h5file.get_node('/Test')
+        data = arr.read()
+        expectedData = numpy.array(
+                [(1, 11), (2, 12), (3, 13)],
+                dtype={'names': ['A', 'B'], 'formats': ['<u4', '<u4'],
+                       'offsets': [0, 4], 'itemsize': 16})
+        self.assertTrue(common.areArraysEqual(data, expectedData))
 
 
 class EnumTestCase(common.TestFileMixin, TestCase):
@@ -38,10 +67,10 @@ class EnumTestCase(common.TestFileMixin, TestCase):
     h5fname = test_filename('smpl_enum.h5')
 
     def test(self):
-        self.assertTrue('/EnumTest' in self.h5file)
+        self.assertIn('/EnumTest', self.h5file)
 
         arr = self.h5file.get_node('/EnumTest')
-        self.assertTrue(isinstance(arr, tables.Array))
+        self.assertIsInstance(arr, tables.Array)
 
         enum = arr.get_enum()
         expectedEnum = tables.Enum(['RED', 'GREEN', 'BLUE', 'WHITE', 'BLACK'])
@@ -65,10 +94,10 @@ class NumericTestCase(common.TestFileMixin, TestCase):
     """
 
     def test(self):
-        self.assertTrue('/TestArray' in self.h5file)
+        self.assertIn('/TestArray', self.h5file)
 
         arr = self.h5file.get_node('/TestArray')
-        self.assertTrue(isinstance(arr, tables.Array))
+        self.assertIsInstance(arr, tables.Array)
 
         self.assertEqual(arr.atom.type, self.type)
         self.assertEqual(arr.byteorder, self.byteorder)
@@ -132,10 +161,10 @@ class ChunkedCompoundTestCase(common.TestFileMixin, TestCase):
     h5fname = test_filename('smpl_compound_chunked.h5')
 
     def test(self):
-        self.assertTrue('/CompoundChunked' in self.h5file)
+        self.assertIn('/CompoundChunked', self.h5file)
 
         tbl = self.h5file.get_node('/CompoundChunked')
-        self.assertTrue(isinstance(tbl, tables.Table))
+        self.assertIsInstance(tbl, tables.Table)
 
         self.assertEqual(
             tbl.colnames,
@@ -186,10 +215,10 @@ class ContiguousCompoundTestCase(common.TestFileMixin, TestCase):
     h5fname = test_filename('non-chunked-table.h5')
 
     def test(self):
-        self.assertTrue('/test_var/structure variable' in self.h5file)
+        self.assertIn('/test_var/structure variable', self.h5file)
 
         tbl = self.h5file.get_node('/test_var/structure variable')
-        self.assertTrue(isinstance(tbl, tables.Table))
+        self.assertIsInstance(tbl, tables.Table)
 
         self.assertEqual(
             tbl.colnames,
@@ -223,7 +252,7 @@ class ContiguousCompoundAppendTestCase(common.TestFileMixin, TestCase):
     h5fname = test_filename('non-chunked-table.h5')
 
     def test(self):
-        self.assertTrue('/test_var/structure variable' in self.h5file)
+        self.assertIn('/test_var/structure variable', self.h5file)
         self.h5file.close()
         # Do a copy to a temporary to avoid modifying the original file
         h5fname_copy = tempfile.mktemp(".h5")
@@ -255,10 +284,10 @@ class ExtendibleTestCase(common.TestFileMixin, TestCase):
     h5fname = test_filename('smpl_SDSextendible.h5')
 
     def test(self):
-        self.assertTrue('/ExtendibleArray' in self.h5file)
+        self.assertIn('/ExtendibleArray', self.h5file)
 
         arr = self.h5file.get_node('/ExtendibleArray')
-        self.assertTrue(isinstance(arr, tables.EArray))
+        self.assertIsInstance(arr, tables.EArray)
 
         self.assertEqual(arr.byteorder, 'big')
         self.assertEqual(arr.atom.type, 'int32')
@@ -288,7 +317,7 @@ class SzipTestCase(common.TestFileMixin, TestCase):
     h5fname = test_filename('test_szip.h5')
 
     def test(self):
-        self.assertTrue('/dset_szip' in self.h5file)
+        self.assertIn('/dset_szip', self.h5file)
 
         arr = self.h5file.get_node('/dset_szip')
         filters = ("Filters(complib='szip', shuffle=False, bitshuffle=False, "
@@ -301,7 +330,7 @@ class MatlabFileTestCase(common.TestFileMixin, TestCase):
     h5fname = test_filename('matlab_file.mat')
 
     def test_unicode(self):
-        array = self.h5file.get_node(six.text_type('/'), six.text_type('a'))
+        array = self.h5file.get_node('/', 'a')
         self.assertEqual(array.shape, (3, 1))
 
     # in Python 3 this will be the same as the test above
@@ -360,6 +389,7 @@ def suite():
     niter = 1
 
     for i in range(niter):
+        theSuite.addTest(unittest.makeSuite(PaddedArrayTestCase))
         theSuite.addTest(unittest.makeSuite(EnumTestCase))
         theSuite.addTest(unittest.makeSuite(F64BETestCase))
         theSuite.addTest(unittest.makeSuite(F64LETestCase))

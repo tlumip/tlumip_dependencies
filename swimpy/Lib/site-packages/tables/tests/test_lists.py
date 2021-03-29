@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from __future__ import print_function
-from __future__ import absolute_import
 import os
 import tempfile
 
@@ -9,7 +7,6 @@ import tables
 from tables.tests import common
 from tables.tests.common import unittest
 from tables.tests.common import PyTablesTestCase as TestCase
-from six.moves import range
 
 
 def WriteRead(filename, testTuple):
@@ -144,14 +141,14 @@ class ExceptionTestCase(TestCase):
             print('\n', '-=' * 30)
             print("Running test for %s" % (self.title))
         a = self.charList
-        with self.assertRaises(ValueError):
+        with self.assertRaises((ValueError, TypeError)):
             WriteRead(self.h5fname, a)
 
     def test01_types(self):
         """Non supported lists object (numerical types)"""
 
         a = self.numericalList
-        with self.assertRaises(ValueError):
+        with self.assertRaises((ValueError, TypeError)):
             WriteRead(self.h5fname, a)
 
 

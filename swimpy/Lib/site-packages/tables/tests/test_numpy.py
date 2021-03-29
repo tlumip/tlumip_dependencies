@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from __future__ import print_function
-from __future__ import absolute_import
 import os
 import sys
 import tempfile
@@ -18,7 +16,6 @@ from tables.tests import common
 from tables.tests.common import allequal
 from tables.tests.common import unittest
 from tables.tests.common import PyTablesTestCase as TestCase
-from six.moves import range
 
 
 typecodes = ['b', 'h', 'i', 'l', 'q', 'f', 'd']
@@ -286,12 +283,12 @@ class GroupsArrayTestCase(common.TempFileMixin, TestCase):
                     # Special expection. We have no way to distinguish between
                     # "l" and "i" typecode, and we can consider them the same
                     # to all practical effects
-                    self.assertTrue(b.dtype.char == "l" or b.dtype.char == "i")
+                    self.assertIn(b.dtype.char, ("l", "i"))
                 elif (a.dtype.char == "I" or a.dtype.char == "L"):
                     # Special expection. We have no way to distinguish between
                     # "L" and "I" typecode, and we can consider them the same
                     # to all practical effects
-                    self.assertTrue(b.dtype.char == "L" or b.dtype.char == "I")
+                    self.assertIn(b.dtype.char, ("L", "I"))
                 else:
                     self.assertTrue(allequal(a, b, "numpy"))
             elif np.dtype('l').itemsize == 8:
@@ -299,12 +296,12 @@ class GroupsArrayTestCase(common.TempFileMixin, TestCase):
                     # Special expection. We have no way to distinguish between
                     # "q" and "l" typecode in 64-bit platforms, and we can
                     # consider them the same to all practical effects
-                    self.assertTrue(b.dtype.char == "l" or b.dtype.char == "q")
+                    self.assertIn(b.dtype.char, ("l", "q"))
                 elif (a.dtype.char == "Q" or a.dtype.char == "L"):
                     # Special expection. We have no way to distinguish between
                     # "Q" and "L" typecode in 64-bit platforms, and we can
                     # consider them the same to all practical effects
-                    self.assertTrue(b.dtype.char == "L" or b.dtype.char == "Q")
+                    self.assertIn(b.dtype.char, ("L", "Q"))
                 else:
                     self.assertTrue(allequal(a, b, "numpy"))
 
@@ -370,7 +367,7 @@ class GroupsArrayTestCase(common.TempFileMixin, TestCase):
                 # Special expection. We have no way to distinguish between
                 # "l" and "i" typecode, and we can consider them the same
                 # to all practical effects
-                self.assertTrue(b.dtype.char == "l" or b.dtype.char == "i")
+                self.assertIn(b.dtype.char, ("l", "i"))
             else:
                 self.assertEqual(a.dtype.char, b.dtype.char)
 
@@ -465,7 +462,8 @@ class TableReadTestCase(common.TempFileMixin, TestCase):
         for colname in table.colnames:
             numcol = table.read(field=colname)
             typecol = table.coltypes[colname]
-            nctypecode = np.typeNA[numcol.dtype.char[0]]
+            #nctypecode = np.typeNA[numcol.dtype.char[0]]
+            nctypecode = np.sctypeDict[numcol.dtype.char[0]]
             if typecol != "string":
                 if common.verbose:
                     print("Typecode of NumPy column read:", nctypecode)
@@ -639,18 +637,18 @@ class TableNativeFlavorTestCase(common.TempFileMixin, TestCase):
             print("First 3 elements of read:", data[:3])
 
         # Check that both NumPy objects are equal
-        self.assertTrue(isinstance(data, np.ndarray))
+        self.assertIsInstance(data, np.ndarray)
 
         # Check the value of some columns
         # A flat column
         col = table.cols.x[:3]
-        self.assertTrue(isinstance(col, np.ndarray))
+        self.assertIsInstance(col, np.ndarray)
         npcol = np.zeros((3, 2), dtype="int32")
         self.assertTrue(allequal(col, npcol, "numpy"))
 
         # A nested column
         col = table.cols.Info[:3]
-        self.assertTrue(isinstance(col, np.ndarray))
+        self.assertIsInstance(col, np.ndarray)
         dtype = [('value', 'c16'),
                  ('y2', 'f8'),
                  ('Info2',
@@ -681,18 +679,18 @@ class TableNativeFlavorTestCase(common.TempFileMixin, TestCase):
             print("First 3 elements of read:", data[:3])
 
         # Check that both NumPy objects are equal
-        self.assertTrue(isinstance(data, np.ndarray))
+        self.assertIsInstance(data, np.ndarray)
 
         # Check the value of some columns
         # A flat column
         col = table.cols.x[:9:3]
-        self.assertTrue(isinstance(col, np.ndarray))
+        self.assertIsInstance(col, np.ndarray)
         npcol = np.zeros((3, 2), dtype="int32")
         self.assertTrue(allequal(col, npcol, "numpy"))
 
         # A nested column
         col = table.cols.Info[:9:3]
-        self.assertTrue(isinstance(col, np.ndarray))
+        self.assertIsInstance(col, np.ndarray)
         dtype = [('value', '%sc16' % byteorder),
                  ('y2', '%sf8' % byteorder),
                  ('Info2',
@@ -723,7 +721,7 @@ class TableNativeFlavorTestCase(common.TempFileMixin, TestCase):
             print("First 3 elements of read:", data[:3])
 
         # Check that both NumPy objects are equal
-        self.assertTrue(isinstance(data, np.ndarray))
+        self.assertIsInstance(data, np.ndarray)
 
         # Check that all columns have been selected
         self.assertEqual(len(data), 100)
@@ -745,7 +743,7 @@ class TableNativeFlavorTestCase(common.TempFileMixin, TestCase):
             print("Length of the data read:", len(data))
 
         # Check that both NumPy objects are equal
-        self.assertTrue(isinstance(data, np.ndarray))
+        self.assertIsInstance(data, np.ndarray)
 
         # Check that all columns have been selected
         self.assertEqual(len(data), self.nrows)
@@ -764,7 +762,7 @@ class TableNativeFlavorTestCase(common.TempFileMixin, TestCase):
             print("Length of the data read:", len(data))
 
         # Check that both NumPy objects are equal
-        self.assertTrue(isinstance(data, np.ndarray))
+        self.assertIsInstance(data, np.ndarray)
 
         # Check that all columns have been selected
         self.assertEqual(len(data), 0)
@@ -793,7 +791,7 @@ class TableNativeFlavorTestCase(common.TempFileMixin, TestCase):
             print("Length of the data read:", len(data))
 
         # Check that both NumPy objects are equal
-        self.assertTrue(isinstance(data, np.ndarray))
+        self.assertIsInstance(data, np.ndarray)
 
         # Check the type
         self.assertEqual(data.dtype.descr, npdata.dtype.descr)
@@ -821,7 +819,7 @@ class TableNativeFlavorTestCase(common.TempFileMixin, TestCase):
             print("Length of the data read:", len(data))
 
         # Check that both NumPy objects are equal
-        self.assertTrue(isinstance(data, np.ndarray))
+        self.assertIsInstance(data, np.ndarray)
 
         # Check the type
         self.assertEqual(data.dtype.descr, npdata.dtype.descr)
@@ -848,7 +846,7 @@ class TableNativeFlavorTestCase(common.TempFileMixin, TestCase):
             print("Length of the data read:", len(data))
 
         # Check that both NumPy objects are equal
-        self.assertTrue(isinstance(data, np.ndarray))
+        self.assertIsInstance(data, np.ndarray)
 
         # Check that all columns have been selected
         self.assertEqual(len(data), 100)
@@ -875,7 +873,7 @@ class TableNativeFlavorTestCase(common.TempFileMixin, TestCase):
             print("Length of the data read:", len(data))
 
         # Check that both NumPy objects are equal
-        self.assertTrue(isinstance(data, np.ndarray))
+        self.assertIsInstance(data, np.ndarray)
 
         # Check the type
         self.assertEqual(data.dtype.descr, ycol.dtype.descr)
@@ -905,7 +903,7 @@ class TableNativeFlavorTestCase(common.TempFileMixin, TestCase):
             print("Length of the data read:", len(data))
 
         # Check that both NumPy objects are equal
-        self.assertTrue(isinstance(data, np.ndarray))
+        self.assertIsInstance(data, np.ndarray)
 
         # Check the type
         self.assertEqual(data.dtype.descr, ycol.dtype.descr)
@@ -942,7 +940,7 @@ class TableNativeFlavorTestCase(common.TempFileMixin, TestCase):
             print("Length of the data read:", len(data))
 
         # Check that both NumPy objects are equal
-        self.assertTrue(isinstance(data, np.ndarray))
+        self.assertIsInstance(data, np.ndarray)
 
         # Check the type
         self.assertEqual(data.dtype.descr, npdata.dtype.descr)
@@ -980,7 +978,7 @@ class TableNativeFlavorTestCase(common.TempFileMixin, TestCase):
             print("Length of the data read:", len(data))
 
         # Check that both NumPy objects are equal
-        self.assertTrue(isinstance(data, np.ndarray))
+        self.assertIsInstance(data, np.ndarray)
 
         # Check the type
         self.assertEqual(data.dtype.descr, npdata.dtype.descr)
@@ -1014,7 +1012,7 @@ class TableNativeFlavorTestCase(common.TempFileMixin, TestCase):
             print("Length of the data read:", len(data))
 
         # Check that both NumPy objects are equal
-        self.assertTrue(isinstance(data, np.ndarray))
+        self.assertIsInstance(data, np.ndarray)
 
         # Check the type
         self.assertEqual(data.dtype.descr, ycol.dtype.descr)
@@ -1048,7 +1046,7 @@ class TableNativeFlavorTestCase(common.TempFileMixin, TestCase):
             print("Length of the data read:", len(data))
 
         # Check that both NumPy objects are equal
-        self.assertTrue(isinstance(data, np.ndarray))
+        self.assertIsInstance(data, np.ndarray)
 
         # Check the type
         self.assertEqual(data.dtype.descr, ycol.dtype.descr)
@@ -1082,7 +1080,7 @@ class TableNativeFlavorTestCase(common.TempFileMixin, TestCase):
             print("Length of the data read:", len(data))
 
         # Check that both NumPy objects are equal
-        self.assertTrue(isinstance(data, np.ndarray))
+        self.assertIsInstance(data, np.ndarray)
 
         # Check the type
         self.assertEqual(data.dtype.descr, ycol.dtype.descr)
@@ -1116,7 +1114,7 @@ class TableNativeFlavorTestCase(common.TempFileMixin, TestCase):
             print("Length of the data read:", len(data))
 
         # Check that both NumPy objects are equal
-        self.assertTrue(isinstance(data, np.ndarray))
+        self.assertIsInstance(data, np.ndarray)
 
         # Check the type
         self.assertEqual(data.dtype.descr, ycol.dtype.descr)
@@ -1139,7 +1137,7 @@ class TableNativeFlavorTestCase(common.TempFileMixin, TestCase):
             print("First 3 elements of read:", data[:3])
 
         # Check that both NumPy objects are equal
-        self.assertTrue(isinstance(data, np.ndarray))
+        self.assertIsInstance(data, np.ndarray)
 
         # Check that all columns have been selected
         self.assertEqual(len(data), 100)
@@ -1168,7 +1166,7 @@ class TableNativeFlavorTestCase(common.TempFileMixin, TestCase):
             print("First 3 elements of read:", data[:3])
 
         # Check that both NumPy objects are equal
-        self.assertTrue(isinstance(data, np.ndarray))
+        self.assertIsInstance(data, np.ndarray)
 
         # Check that all columns have been selected
         self.assertEqual(len(data), 100)
@@ -1206,7 +1204,7 @@ class TableNativeFlavorTestCase(common.TempFileMixin, TestCase):
             print("First 3 elements of read:", data[:3])
 
         # Check that both NumPy objects are equal
-        self.assertTrue(isinstance(data, np.ndarray))
+        self.assertIsInstance(data, np.ndarray)
 
         # Check that all columns have been selected
         self.assertEqual(len(data), 150)
@@ -1221,11 +1219,11 @@ class TableNativeFlavorTestCase(common.TempFileMixin, TestCase):
 
 
 class TableNativeFlavorOpenTestCase(TableNativeFlavorTestCase):
-    close = 0
+    close = False
 
 
 class TableNativeFlavorCloseTestCase(TableNativeFlavorTestCase):
-    close = 1
+    close = True
 
 
 class AttributesTestCase(common.TempFileMixin, TestCase):
@@ -1251,7 +1249,7 @@ class AttributesTestCase(common.TempFileMixin, TestCase):
         npcomp = np.zeros((1, 1), dtype='int16')
 
         # Check that both NumPy objects are equal
-        self.assertTrue(isinstance(data, np.ndarray))
+        self.assertIsInstance(data, np.ndarray)
 
         # Check the type
         self.assertEqual(data.dtype.descr, npcomp.dtype.descr)
@@ -1279,7 +1277,7 @@ class AttributesTestCase(common.TempFileMixin, TestCase):
         npcomp = np.ones((1, 2), dtype='int16')
 
         # Check that both NumPy objects are equal
-        self.assertTrue(isinstance(data, np.ndarray))
+        self.assertIsInstance(data, np.ndarray)
 
         # Check the type
         self.assertEqual(data.dtype.descr, npcomp.dtype.descr)

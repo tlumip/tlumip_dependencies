@@ -1,0 +1,428 @@
+{
+ "build": "py_0",
+ "build_number": 0,
+ "channel": "https://repo.anaconda.com/pkgs/main/noarch",
+ "constrains": [],
+ "depends": [
+  "python"
+ ],
+ "extracted_package_dir": "",
+ "features": "",
+ "files": [
+  "Lib/site-packages/sphinx_rtd_theme-0.4.3.dist-info/INSTALLER",
+  "Lib/site-packages/sphinx_rtd_theme-0.4.3.dist-info/LICENSE",
+  "Lib/site-packages/sphinx_rtd_theme-0.4.3.dist-info/METADATA",
+  "Lib/site-packages/sphinx_rtd_theme-0.4.3.dist-info/RECORD",
+  "Lib/site-packages/sphinx_rtd_theme-0.4.3.dist-info/WHEEL",
+  "Lib/site-packages/sphinx_rtd_theme-0.4.3.dist-info/entry_points.txt",
+  "Lib/site-packages/sphinx_rtd_theme-0.4.3.dist-info/top_level.txt",
+  "Lib/site-packages/sphinx_rtd_theme/__init__.py",
+  "Lib/site-packages/sphinx_rtd_theme/breadcrumbs.html",
+  "Lib/site-packages/sphinx_rtd_theme/footer.html",
+  "Lib/site-packages/sphinx_rtd_theme/layout.html",
+  "Lib/site-packages/sphinx_rtd_theme/search.html",
+  "Lib/site-packages/sphinx_rtd_theme/searchbox.html",
+  "Lib/site-packages/sphinx_rtd_theme/static/css/badge_only.css",
+  "Lib/site-packages/sphinx_rtd_theme/static/css/theme.css",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-bold.eot",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-bold.ttf",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-bold.woff",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-bold.woff2",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-bolditalic.eot",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-bolditalic.ttf",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-bolditalic.woff",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-bolditalic.woff2",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-italic.eot",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-italic.ttf",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-italic.woff",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-italic.woff2",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-regular.eot",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-regular.ttf",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-regular.woff",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-regular.woff2",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/RobotoSlab/roboto-slab-v7-bold.eot",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/RobotoSlab/roboto-slab-v7-bold.ttf",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/RobotoSlab/roboto-slab-v7-bold.woff",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/RobotoSlab/roboto-slab-v7-bold.woff2",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/RobotoSlab/roboto-slab-v7-regular.eot",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/RobotoSlab/roboto-slab-v7-regular.ttf",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/RobotoSlab/roboto-slab-v7-regular.woff",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/RobotoSlab/roboto-slab-v7-regular.woff2",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/fontawesome-webfont.eot",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/fontawesome-webfont.svg",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/fontawesome-webfont.ttf",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/fontawesome-webfont.woff",
+  "Lib/site-packages/sphinx_rtd_theme/static/fonts/fontawesome-webfont.woff2",
+  "Lib/site-packages/sphinx_rtd_theme/static/js/modernizr.min.js",
+  "Lib/site-packages/sphinx_rtd_theme/static/js/theme.js",
+  "Lib/site-packages/sphinx_rtd_theme/theme.conf",
+  "Lib/site-packages/sphinx_rtd_theme/versions.html",
+  ".nonadmin",
+  "Lib/site-packages/sphinx_rtd_theme/__pycache__/__init__.cpython-38.pyc"
+ ],
+ "fn": "sphinx_rtd_theme-0.4.3-py_0.conda",
+ "legacy_bz2_md5": "2d509d4cf49d2e57a31049749d21a426",
+ "license": "MIT",
+ "link": {
+  "source": "",
+  "type": 1
+ },
+ "md5": "6ca1fcc2c4e55b8f3a56cc539d5a4c24",
+ "name": "sphinx_rtd_theme",
+ "noarch": "python",
+ "package_tarball_full_path": "",
+ "package_type": "noarch_python",
+ "paths_data": {
+  "paths": [
+   {
+    "_path": "site-packages/sphinx_rtd_theme-0.4.3.dist-info/INSTALLER",
+    "path_type": "hardlink",
+    "sha256": "ceebae7b8927a3227e5303cf5e0f1f7b34bb542ad7250ac03fbcde36ec2f1508",
+    "sha256_in_prefix": "ceebae7b8927a3227e5303cf5e0f1f7b34bb542ad7250ac03fbcde36ec2f1508",
+    "size_in_bytes": 4
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme-0.4.3.dist-info/LICENSE",
+    "path_type": "hardlink",
+    "sha256": "4864896421b8a49112eefa899a6b4366329bd6fe669f38efefb29f81487cef1e",
+    "sha256_in_prefix": "4864896421b8a49112eefa899a6b4366329bd6fe669f38efefb29f81487cef1e",
+    "size_in_bytes": 1119
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme-0.4.3.dist-info/METADATA",
+    "path_type": "hardlink",
+    "sha256": "6acaa2b490ed075a3120b15eae85ee583d3a345133ab141841899c47a20b6e89",
+    "sha256_in_prefix": "6acaa2b490ed075a3120b15eae85ee583d3a345133ab141841899c47a20b6e89",
+    "size_in_bytes": 2985
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme-0.4.3.dist-info/RECORD",
+    "path_type": "hardlink",
+    "sha256": "ec48ba151d4d78dfe99fb6c71930414cd62416d3eccf581d3fa29a7dd3f96f8c",
+    "sha256_in_prefix": "ec48ba151d4d78dfe99fb6c71930414cd62416d3eccf581d3fa29a7dd3f96f8c",
+    "size_in_bytes": 5112
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme-0.4.3.dist-info/WHEEL",
+    "path_type": "hardlink",
+    "sha256": "1d7faff7e9e8524c94a31c99d4f312b92edab94c43011e1505da182ea0f4c70b",
+    "sha256_in_prefix": "1d7faff7e9e8524c94a31c99d4f312b92edab94c43011e1505da182ea0f4c70b",
+    "size_in_bytes": 110
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme-0.4.3.dist-info/entry_points.txt",
+    "path_type": "hardlink",
+    "sha256": "893b39c270659395a3d778af04a963101739b171e2e56dfa9625a63e6ba04248",
+    "sha256_in_prefix": "893b39c270659395a3d778af04a963101739b171e2e56dfa9625a63e6ba04248",
+    "size_in_bytes": 58
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme-0.4.3.dist-info/top_level.txt",
+    "path_type": "hardlink",
+    "sha256": "7c93d921726cfe09e6826e94ffa6b31933660eccfccdae06a6b6b880619c5ca8",
+    "sha256_in_prefix": "7c93d921726cfe09e6826e94ffa6b31933660eccfccdae06a6b6b880619c5ca8",
+    "size_in_bytes": 17
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/__init__.py",
+    "path_type": "hardlink",
+    "sha256": "66a48b25f8fb70e538fa5528324dbf7fef0a291808170617fa61ef478025208e",
+    "sha256_in_prefix": "66a48b25f8fb70e538fa5528324dbf7fef0a291808170617fa61ef478025208e",
+    "size_in_bytes": 521
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/breadcrumbs.html",
+    "path_type": "hardlink",
+    "sha256": "cb96476e8b4d947b50887bfcdef409349600c4bb8bd666a0a0ef3ee9eb817781",
+    "sha256_in_prefix": "cb96476e8b4d947b50887bfcdef409349600c4bb8bd666a0a0ef3ee9eb817781",
+    "size_in_bytes": 3884
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/footer.html",
+    "path_type": "hardlink",
+    "sha256": "fcba78ecb0c1d69800b779b7c2a18c52654d501a964370d69692cde79b2ec2a3",
+    "sha256_in_prefix": "fcba78ecb0c1d69800b779b7c2a18c52654d501a964370d69692cde79b2ec2a3",
+    "size_in_bytes": 2035
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/layout.html",
+    "path_type": "hardlink",
+    "sha256": "dae886eeb07be664f85d925b243dbe1d324b41946f8ffe8d73adf54949b537de",
+    "sha256_in_prefix": "dae886eeb07be664f85d925b243dbe1d324b41946f8ffe8d73adf54949b537de",
+    "size_in_bytes": 8714
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/search.html",
+    "path_type": "hardlink",
+    "sha256": "5c4dfdf52d544ea20a46da5c4908dea1d336667caac0e4f97dcf8ff2021e5366",
+    "sha256_in_prefix": "5c4dfdf52d544ea20a46da5c4908dea1d336667caac0e4f97dcf8ff2021e5366",
+    "size_in_bytes": 1530
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/searchbox.html",
+    "path_type": "hardlink",
+    "sha256": "8b37a7ce47936554d6e90b456e5cab65c518a494d53289ca1e13f58c03b2e63e",
+    "sha256_in_prefix": "8b37a7ce47936554d6e90b456e5cab65c518a494d53289ca1e13f58c03b2e63e",
+    "size_in_bytes": 365
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/css/badge_only.css",
+    "path_type": "hardlink",
+    "sha256": "20c35180ca0ed324fc6ba9f896fe2b9588538b6b51885d6f73e89b2720b8dbb6",
+    "sha256_in_prefix": "20c35180ca0ed324fc6ba9f896fe2b9588538b6b51885d6f73e89b2720b8dbb6",
+    "size_in_bytes": 3391
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/css/theme.css",
+    "path_type": "hardlink",
+    "sha256": "4c69fd4e74dd3eb002a6c5998638270627ac61ae2a341c2e46f61b33ffc4f970",
+    "sha256_in_prefix": "4c69fd4e74dd3eb002a6c5998638270627ac61ae2a341c2e46f61b33ffc4f970",
+    "size_in_bytes": 118340
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-bold.eot",
+    "path_type": "hardlink",
+    "sha256": "b91fc1ca55df440dc11354b32a39b45db663d24bb17b16dcb2e706330955b0d1",
+    "sha256_in_prefix": "b91fc1ca55df440dc11354b32a39b45db663d24bb17b16dcb2e706330955b0d1",
+    "size_in_bytes": 256056
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-bold.ttf",
+    "path_type": "hardlink",
+    "sha256": "f71f833c099f450606f8107b83ef208ae918c0ea00779466d45e9be96b0bc7cc",
+    "sha256_in_prefix": "f71f833c099f450606f8107b83ef208ae918c0ea00779466d45e9be96b0bc7cc",
+    "size_in_bytes": 600856
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-bold.woff",
+    "path_type": "hardlink",
+    "sha256": "0e56b17d142eb366c8007031d14e34da48c70b4a9d9a0ca492e696a7bae45e1e",
+    "sha256_in_prefix": "0e56b17d142eb366c8007031d14e34da48c70b4a9d9a0ca492e696a7bae45e1e",
+    "size_in_bytes": 309728
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-bold.woff2",
+    "path_type": "hardlink",
+    "sha256": "ae88fc0d7a961832f809527d30bd3983a6866d42f66a56ade23f543681594db6",
+    "sha256_in_prefix": "ae88fc0d7a961832f809527d30bd3983a6866d42f66a56ade23f543681594db6",
+    "size_in_bytes": 184912
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-bolditalic.eot",
+    "path_type": "hardlink",
+    "sha256": "b3d585879a02f48c5d43d8f91d06b167e367a31934bb3b8147c0a90b5ca32bfc",
+    "sha256_in_prefix": "b3d585879a02f48c5d43d8f91d06b167e367a31934bb3b8147c0a90b5ca32bfc",
+    "size_in_bytes": 266158
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-bolditalic.ttf",
+    "path_type": "hardlink",
+    "sha256": "f98d040631714eabffd0ffb747576674fa78c2910f6d9e3dc0c58481d03c1898",
+    "sha256_in_prefix": "f98d040631714eabffd0ffb747576674fa78c2910f6d9e3dc0c58481d03c1898",
+    "size_in_bytes": 622572
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-bolditalic.woff",
+    "path_type": "hardlink",
+    "sha256": "980c8592e5488df256192c999e92db8fd302db8cd8909b7fa266a684e37e45f8",
+    "sha256_in_prefix": "980c8592e5488df256192c999e92db8fd302db8cd8909b7fa266a684e37e45f8",
+    "size_in_bytes": 323344
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-bolditalic.woff2",
+    "path_type": "hardlink",
+    "sha256": "c0916a33340d063f7b05679e08031e729d1888444706f04804705da5966d895d",
+    "sha256_in_prefix": "c0916a33340d063f7b05679e08031e729d1888444706f04804705da5966d895d",
+    "size_in_bytes": 193308
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-italic.eot",
+    "path_type": "hardlink",
+    "sha256": "bc24dbe04f5b2415678f978e7e2f630cc6610670d684e088e73ad29c439eafe3",
+    "sha256_in_prefix": "bc24dbe04f5b2415678f978e7e2f630cc6610670d684e088e73ad29c439eafe3",
+    "size_in_bytes": 268604
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-italic.ttf",
+    "path_type": "hardlink",
+    "sha256": "12d825af88eafea1ce3aa469f83c03acaecd0d03f690f409c8643529f1205b4f",
+    "sha256_in_prefix": "12d825af88eafea1ce3aa469f83c03acaecd0d03f690f409c8643529f1205b4f",
+    "size_in_bytes": 639388
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-italic.woff",
+    "path_type": "hardlink",
+    "sha256": "26318a1467a5e5caf10b04cfa942d079632560cd7a29cec565fd1dc9f7ec5081",
+    "sha256_in_prefix": "26318a1467a5e5caf10b04cfa942d079632560cd7a29cec565fd1dc9f7ec5081",
+    "size_in_bytes": 328412
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-italic.woff2",
+    "path_type": "hardlink",
+    "sha256": "4465765f2f6eddcdad34ffd7cab559e56bc0e75e45e192f85e9562b0771481dc",
+    "sha256_in_prefix": "4465765f2f6eddcdad34ffd7cab559e56bc0e75e45e192f85e9562b0771481dc",
+    "size_in_bytes": 195704
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-regular.eot",
+    "path_type": "hardlink",
+    "sha256": "e735410675eacc363b257112f39eb819a854b03077d7b1f0caa6e7660ffbd8b3",
+    "sha256_in_prefix": "e735410675eacc363b257112f39eb819a854b03077d7b1f0caa6e7660ffbd8b3",
+    "size_in_bytes": 253461
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-regular.ttf",
+    "path_type": "hardlink",
+    "sha256": "089ab6d4a57e0e6c4dd3b681b6fd50a5184f1b902429d35e1227e52d6ccad1bd",
+    "sha256_in_prefix": "089ab6d4a57e0e6c4dd3b681b6fd50a5184f1b902429d35e1227e52d6ccad1bd",
+    "size_in_bytes": 607720
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-regular.woff",
+    "path_type": "hardlink",
+    "sha256": "5b9025dda4d7688e3311b0c17eddc501133b807def33effaef6593843cf5416e",
+    "sha256_in_prefix": "5b9025dda4d7688e3311b0c17eddc501133b807def33effaef6593843cf5416e",
+    "size_in_bytes": 309192
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/Lato/lato-regular.woff2",
+    "path_type": "hardlink",
+    "sha256": "983b0caf336e8542214fc17019a4fc5e0360864b92806ca14d55c1fc1c2c5a0f",
+    "sha256_in_prefix": "983b0caf336e8542214fc17019a4fc5e0360864b92806ca14d55c1fc1c2c5a0f",
+    "size_in_bytes": 182708
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/RobotoSlab/roboto-slab-v7-bold.eot",
+    "path_type": "hardlink",
+    "sha256": "4438991a12ff951cc8d0e83348ec06d9f910591b1b014c476e9595d4da099e48",
+    "sha256_in_prefix": "4438991a12ff951cc8d0e83348ec06d9f910591b1b014c476e9595d4da099e48",
+    "size_in_bytes": 79520
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/RobotoSlab/roboto-slab-v7-bold.ttf",
+    "path_type": "hardlink",
+    "sha256": "ba12d2eab1fa765b6b05398fa7e047dd76293f0c051ce57a8f7b0c591c14d42b",
+    "sha256_in_prefix": "ba12d2eab1fa765b6b05398fa7e047dd76293f0c051ce57a8f7b0c591c14d42b",
+    "size_in_bytes": 170616
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/RobotoSlab/roboto-slab-v7-bold.woff",
+    "path_type": "hardlink",
+    "sha256": "9fec87cadbe2413b255f1ec577573a83f1ca2e1c37aa023dbebcd3a7b864636a",
+    "sha256_in_prefix": "9fec87cadbe2413b255f1ec577573a83f1ca2e1c37aa023dbebcd3a7b864636a",
+    "size_in_bytes": 87624
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/RobotoSlab/roboto-slab-v7-bold.woff2",
+    "path_type": "hardlink",
+    "sha256": "1a0c024dd1a267c52d5575469ffe8570d1e84164de7d393cf3414bafd17d7a0c",
+    "sha256_in_prefix": "1a0c024dd1a267c52d5575469ffe8570d1e84164de7d393cf3414bafd17d7a0c",
+    "size_in_bytes": 67312
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/RobotoSlab/roboto-slab-v7-regular.eot",
+    "path_type": "hardlink",
+    "sha256": "b3809b71d417c6c225e77a55880aa7915b4e4b4f77a5e2d243f3563731e7f55c",
+    "sha256_in_prefix": "b3809b71d417c6c225e77a55880aa7915b4e4b4f77a5e2d243f3563731e7f55c",
+    "size_in_bytes": 78331
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/RobotoSlab/roboto-slab-v7-regular.ttf",
+    "path_type": "hardlink",
+    "sha256": "13aa5f54c6f2fa2e388fe0e675cdbcc6a81f6270a8bf9c03a5df8af9cb022810",
+    "sha256_in_prefix": "13aa5f54c6f2fa2e388fe0e675cdbcc6a81f6270a8bf9c03a5df8af9cb022810",
+    "size_in_bytes": 169064
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/RobotoSlab/roboto-slab-v7-regular.woff",
+    "path_type": "hardlink",
+    "sha256": "9f32630e2c0c5135bf1e86e36cb65b3932e4410644235bc2bd995e9c7f6ff117",
+    "sha256_in_prefix": "9f32630e2c0c5135bf1e86e36cb65b3932e4410644235bc2bd995e9c7f6ff117",
+    "size_in_bytes": 86288
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/RobotoSlab/roboto-slab-v7-regular.woff2",
+    "path_type": "hardlink",
+    "sha256": "874e42222856d7af03b3f438d21d923a4280d47fe67c48510e2174a1579795ef",
+    "sha256_in_prefix": "874e42222856d7af03b3f438d21d923a4280d47fe67c48510e2174a1579795ef",
+    "size_in_bytes": 66444
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/fontawesome-webfont.eot",
+    "path_type": "hardlink",
+    "sha256": "7bfcab6db99d5cfbf1705ca0536ddc78585432cc5fa41bbd7ad0f009033b2979",
+    "sha256_in_prefix": "7bfcab6db99d5cfbf1705ca0536ddc78585432cc5fa41bbd7ad0f009033b2979",
+    "size_in_bytes": 165742
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/fontawesome-webfont.svg",
+    "path_type": "hardlink",
+    "sha256": "ad6157926c1622ba4e1d03d478f1541368524bfc46f51e42fe0d945f7ef323e4",
+    "sha256_in_prefix": "ad6157926c1622ba4e1d03d478f1541368524bfc46f51e42fe0d945f7ef323e4",
+    "size_in_bytes": 444379
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/fontawesome-webfont.ttf",
+    "path_type": "hardlink",
+    "sha256": "aa58f33f239a0fb02f5c7a6c45c043d7a9ac9a093335806694ecd6d4edc0d6a8",
+    "sha256_in_prefix": "aa58f33f239a0fb02f5c7a6c45c043d7a9ac9a093335806694ecd6d4edc0d6a8",
+    "size_in_bytes": 165548
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/fontawesome-webfont.woff",
+    "path_type": "hardlink",
+    "sha256": "ba0c59deb5450f5cb41b3f93609ee2d0d995415877ddfa223e8a8a7533474f07",
+    "sha256_in_prefix": "ba0c59deb5450f5cb41b3f93609ee2d0d995415877ddfa223e8a8a7533474f07",
+    "size_in_bytes": 98024
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/fonts/fontawesome-webfont.woff2",
+    "path_type": "hardlink",
+    "sha256": "2adefcbc041e7d18fcf2d417879dc5a09997aa64d675b7a3c4b6ce33da13f3fe",
+    "sha256_in_prefix": "2adefcbc041e7d18fcf2d417879dc5a09997aa64d675b7a3c4b6ce33da13f3fe",
+    "size_in_bytes": 77160
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/js/modernizr.min.js",
+    "path_type": "hardlink",
+    "sha256": "cf25ec18f223f4c51ce1128a42e644cdc2244d88f89d1a51440d9dbe51f4efe8",
+    "sha256_in_prefix": "cf25ec18f223f4c51ce1128a42e644cdc2244d88f89d1a51440d9dbe51f4efe8",
+    "size_in_bytes": 15414
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/static/js/theme.js",
+    "path_type": "hardlink",
+    "sha256": "54ecd5e16634220f8d921af1da4a5383038cbfcbaadf4fa7d022781ffd0a5c4f",
+    "sha256_in_prefix": "54ecd5e16634220f8d921af1da4a5383038cbfcbaadf4fa7d022781ffd0a5c4f",
+    "size_in_bytes": 4414
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/theme.conf",
+    "path_type": "hardlink",
+    "sha256": "ad9283b2d10954341ea34bc124c16ba444d6666b77b848e07267c63a7ffff94c",
+    "sha256_in_prefix": "ad9283b2d10954341ea34bc124c16ba444d6666b77b848e07267c63a7ffff94c",
+    "size_in_bytes": 355
+   },
+   {
+    "_path": "site-packages/sphinx_rtd_theme/versions.html",
+    "path_type": "hardlink",
+    "sha256": "01da556e600d70e4fd006eb6c38dcc31b2ef4d57612a3504604f17251a3b7993",
+    "sha256_in_prefix": "01da556e600d70e4fd006eb6c38dcc31b2ef4d57612a3504604f17251a3b7993",
+    "size_in_bytes": 1299
+   },
+   {
+    "_path": "Lib/site-packages/sphinx_rtd_theme/__pycache__/__init__.cpython-38.pyc",
+    "path_type": "pyc_file"
+   }
+  ],
+  "paths_version": 1
+ },
+ "requested_spec": "sphinx_rtd_theme",
+ "sha256": "7af6b7f5c43faf7a465e387dbd8d93e2b29cb375a7734952c483d9286045bfb0",
+ "size": 4633111,
+ "subdir": "noarch",
+ "timestamp": 1552372551165,
+ "track_features": "",
+ "url": "https://repo.anaconda.com/pkgs/main/noarch/sphinx_rtd_theme-0.4.3-py_0.conda",
+ "version": "0.4.3"
+}

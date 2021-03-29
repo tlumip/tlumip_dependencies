@@ -1,0 +1,12 @@
+prefix=C:/ci/grpc-cpp_1580396277005/_h_env
+exec_prefix=${prefix}
+includedir=${prefix}/include
+libdir=${exec_prefix}/lib
+
+Name: gRPC
+Description: high performance general RPC framework
+Version: 9.0.0
+Cflags: -I${includedir}
+Requires: gpr openssl
+Libs: -L${libdir} -lgrpc -laddress_sorting -lupb -lcares -lz
+Libs.private: 

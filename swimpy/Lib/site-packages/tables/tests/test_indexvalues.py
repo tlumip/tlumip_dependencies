@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from __future__ import print_function
-from __future__ import absolute_import
 import os
 import random
 import tempfile
@@ -15,8 +13,6 @@ from tables.tests import common
 from tables.tests.common import verbose, heavy
 from tables.tests.common import unittest, test_filename
 from tables.tests.common import PyTablesTestCase as TestCase
-import six
-from six.moves import range
 
 
 # An alias for frozenset
@@ -108,7 +104,7 @@ class SelectValuesTestCase(common.TempFileMixin, TestCase):
             # Make sure nrowsinbuf is a multiple of chunkshape
             table1.nrowsinbuf -= table1.nrowsinbuf % self.chunkshape
         # Index all entries:
-        for col in six.itervalues(table1.colinstances):
+        for col in table1.colinstances.values():
             indexrows = col.create_index(
                 kind=self.kind, _blocksizes=self.blocksizes)
         if verbose:
@@ -180,7 +176,7 @@ class SelectValuesTestCase(common.TempFileMixin, TestCase):
 
         # Forth selection
         t1var1 = table1.cols.var1
-        self.assertTrue(t1var1 is not None)
+        self.assertIsNotNone(t1var1)
         results1 = [p["var1"] for p in
                     table1.where('(il<t1var1)&(t1var1<sl)')]
         results2 = [p["var1"] for p in table2
@@ -252,7 +248,7 @@ class SelectValuesTestCase(common.TempFileMixin, TestCase):
 
         # Fourth selection
         t1var1 = table1.cols.var1
-        self.assertTrue(t1var1 is not None)
+        self.assertIsNotNone(t1var1)
         results1 = [p["var1"] for p in table1.where('t1var1 >= sl')]
         results2 = [p["var1"] for p in table2
                     if p["var1"] >= sl]
@@ -277,7 +273,7 @@ class SelectValuesTestCase(common.TempFileMixin, TestCase):
 
         # Do some selections and check the results
         t1var2 = table1.cols.var2
-        self.assertTrue(t1var2 is not None)
+        self.assertIsNotNone(t1var2)
         results1 = [p["var2"] for p in table1.where('t1var2 == True')]
         results2 = [p["var2"] for p in table2 if p["var2"] is True]
         if verbose:
@@ -298,7 +294,7 @@ class SelectValuesTestCase(common.TempFileMixin, TestCase):
 
         # Do some selections and check the results
         t1var2 = table1.cols.var2
-        self.assertTrue(t1var2 is not None)
+        self.assertIsNotNone(t1var2)
         results1 = [p["var2"] for p in table1.where('t1var2 == False')]
         results2 = [p["var2"] for p in table2 if p["var2"] is False]
         if verbose:
@@ -323,7 +319,7 @@ class SelectValuesTestCase(common.TempFileMixin, TestCase):
 
         # Do some selections and check the results
         t1col = table1.cols.var3
-        self.assertTrue(t1col is not None)
+        self.assertIsNotNone(t1col)
 
         # First selection
         results1 = [p["var3"] for p in table1.where('(il<=t1col)&(t1col<=sl)')]
@@ -397,7 +393,7 @@ class SelectValuesTestCase(common.TempFileMixin, TestCase):
 
         # Do some selections and check the results
         t1col = table1.cols.var3
-        self.assertTrue(t1col is not None)
+        self.assertIsNotNone(t1col)
 
         # First selection
         results1 = [p["var3"] for p in table1.where('t1col < sl')]
@@ -475,7 +471,7 @@ class SelectValuesTestCase(common.TempFileMixin, TestCase):
 
         # Do some selections and check the results
         t1col = table1.cols.var3
-        self.assertTrue(t1col is not None)
+        self.assertIsNotNone(t1col)
 
         # First selection
         results1 = [p["var3"] for p in table1.where('t1col < sl')]
@@ -553,7 +549,7 @@ class SelectValuesTestCase(common.TempFileMixin, TestCase):
 
         # Do some selections and check the results
         t1col = table1.cols.var3
-        self.assertTrue(t1col is not None)
+        self.assertIsNotNone(t1col)
 
         # First selection
         results1 = [p["var3"] for p in table1.where('t1col < sl')]
@@ -631,7 +627,7 @@ class SelectValuesTestCase(common.TempFileMixin, TestCase):
 
         # Do some selections and check the results
         t1col = table1.cols.var4
-        self.assertTrue(t1col is not None)
+        self.assertIsNotNone(t1col)
 
         # First selection
         results1 = [p["var4"] for p in table1.where('(il<=t1col)&(t1col<=sl)')]
@@ -707,7 +703,7 @@ class SelectValuesTestCase(common.TempFileMixin, TestCase):
 
         # Do some selections and check the results
         t1col = table1.cols.var4
-        self.assertTrue(t1col is not None)
+        self.assertIsNotNone(t1col)
 
         # First selection
         results1 = [p["var4"] for p in table1.where('t1col < sl')]
@@ -1426,7 +1422,7 @@ class SelectValuesTestCase(common.TempFileMixin, TestCase):
 
         # Do some selections and check the results
         t1col = table1.cols.var1
-        self.assertTrue(t1col is not None)
+        self.assertIsNotNone(t1col)
 
         # First selection
         condition = 't1col<=sl'
@@ -1529,7 +1525,7 @@ class SelectValuesTestCase(common.TempFileMixin, TestCase):
 
         # Do some selections and check the results
         t1col = table1.cols.var4
-        self.assertTrue(t1col is not None)
+        self.assertIsNotNone(t1col)
 
         # First selection
         condition = 't1col<sl'
@@ -1614,7 +1610,7 @@ class SelectValuesTestCase(common.TempFileMixin, TestCase):
 
         # Do some selections and check the results
         t1col = table1.cols.var1
-        self.assertTrue(t1col is not None)
+        self.assertIsNotNone(t1col)
 
         # First selection
         condition = 't1col>=sl'
@@ -1712,7 +1708,7 @@ class SelectValuesTestCase(common.TempFileMixin, TestCase):
 
         # Do some selections and check the results
         t3col = table1.cols.var3
-        self.assertTrue(t3col is not None)
+        self.assertIsNotNone(t3col)
 
         # First selection
         condition = 't3col>=sl'
@@ -2710,7 +2706,7 @@ class SelectValuesTestCase(common.TempFileMixin, TestCase):
         # Do some selections and check the results
         t1col = table1.cols.var1
         t2col = table1.cols.var2
-        self.assertTrue(t2col is not None)
+        self.assertIsNotNone(t2col)
         condition = '(il<=t1col)&(t1col<=sl)&(t2col==True)'
         self.assertTrue(
             table1.will_query_use_indexing(condition) ==
@@ -2812,7 +2808,7 @@ class SelectValuesTestCase(common.TempFileMixin, TestCase):
         il, sl = (str(self.il + 1).encode(
             'ascii'), str(self.sl-2).encode('ascii'))
         t2col = table1.cols.var2
-        self.assertTrue(t2col is not None)
+        self.assertIsNotNone(t2col)
         condition = '(il<=t1col)&(t1col<=sl)'
         self.assertTrue(
             table1.will_query_use_indexing(condition) ==
@@ -3196,7 +3192,7 @@ class LastRowReuseBuffers(TestCase):
             nrow = random.randint(0, self.nelem-1)
             value = id1[nrow]
             idx = ta.get_where_list('id1 == %s' % value)
-            self.assertTrue(len(idx) > 0,
+            self.assertGreater(len(idx), 0,
                             "idx--> %s %s %s %s" % (idx, i, nrow, value))
             self.assertTrue(
                 nrow in idx,
@@ -3215,7 +3211,7 @@ class LastRowReuseBuffers(TestCase):
             nrow = random.randint(0, self.nelem-1)
             value = id1[nrow]
             idx = ta.get_where_list('id1 == %s' % value)
-            self.assertTrue(len(idx) > 0,
+            self.assertGreater(len(idx), 0,
                             "idx--> %s %s %s %s" % (idx, i, nrow, value))
             self.assertTrue(
                 nrow in idx,
@@ -3234,7 +3230,7 @@ class LastRowReuseBuffers(TestCase):
             nrow = random.randint(0, self.nelem-1)
             value = id1[nrow]
             idx = ta.get_where_list('id1 == %s' % value)
-            self.assertTrue(len(idx) > 0,
+            self.assertGreater(len(idx), 0,
                             "idx--> %s %s %s %s" % (idx, i, nrow, value))
             self.assertTrue(
                 nrow in idx,

@@ -12,8 +12,6 @@
 
 """Here is defined the Index class."""
 
-from __future__ import print_function
-from __future__ import absolute_import
 
 import math
 import operator
@@ -23,7 +21,7 @@ import sys
 import tempfile
 import warnings
 
-from time import time, clock
+from time import time, perf_counter
 
 import numpy
 
@@ -45,8 +43,6 @@ from .utilsextension import (nan_aware_gt, nan_aware_ge,
                                    nan_aware_lt, nan_aware_le,
                                    bisect_left, bisect_right)
 from .lrucacheextension import ObjectCache
-import six
-from six.moves import range
 
 
 
@@ -106,7 +102,6 @@ def _table_column_pathname_of_index(indexpathname):
     return (tablepathname, colpathname)
 
 
-@six.python_2_unicode_compatible
 class Index(NotLoggedMixin, Group, indexesextension.Index):
     """Represents the index of a column in a table.
 
@@ -593,7 +588,7 @@ class Index(NotLoggedMixin, Group, indexesextension.Index):
             idx = numpy.empty(len(arr), "uint%d" % (indsize * 8))
             lbucket = self.lbucket
             # Fill the idx with the bucket indices
-            offset = lbucket - ((nrow * (slicesize % lbucket)) % lbucket)
+            offset = int(lbucket - ((nrow * (slicesize % lbucket)) % lbucket))
             idx[0:offset] = 0
             for i in range(offset, slicesize, lbucket):
                 idx[i:i + lbucket] = (i + lbucket - 1) // lbucket
@@ -847,7 +842,7 @@ class Index(NotLoggedMixin, Group, indexesextension.Index):
 
         if self.verbose:
             t1 = time()
-            c1 = clock()
+            c1 = perf_counter()
         ss = self.slicesize
         tmp = self.tmp
         ranges = tmp.ranges[:]
@@ -953,7 +948,7 @@ class Index(NotLoggedMixin, Group, indexesextension.Index):
         self.compute_overlaps(self.tmp, "do_complete_sort()", self.verbose)
         if self.verbose:
             t = round(time() - t1, 4)
-            c = round(clock() - c1, 4)
+            c = round(perf_counter() - c1, 4)
             print("time: %s. clock: %s" % (t, c))
 
     def swap(self, what, mode=None):
@@ -968,7 +963,7 @@ class Index(NotLoggedMixin, Group, indexesextension.Index):
 
         if self.verbose:
             t1 = time()
-            c1 = clock()
+            c1 = perf_counter()
         if what == "chunks":
             self.swap_chunks(mode)
         elif what == "slices":
@@ -982,7 +977,7 @@ class Index(NotLoggedMixin, Group, indexesextension.Index):
         rmult = len(mult.nonzero()[0]) / float(len(mult))
         if self.verbose:
             t = round(time() - t1, 4)
-            c = round(clock() - c1, 4)
+            c = round(perf_counter() - c1, 4)
             print("time: %s. clock: %s" % (t, c))
         # Check that entropy is actually decreasing
         if what == "chunks" and self.last_tover > 0. and self.last_nover > 0:
@@ -1226,7 +1221,7 @@ class Index(NotLoggedMixin, Group, indexesextension.Index):
                 ul = self.nelementsILR // cs
                 bounds = numpy.concatenate((bounds, self.bebounds[:ul]))
             sbounds_idx = bounds.argsort(kind=defsort)
-            offset = nblock * nsb
+            offset = int(nblock * nsb)
             # Swap sorted and indices following the new order
             self.get_neworder(sbounds_idx, sorted, tmp_sorted, sortedLR,
                               nslices, offset, self.dtype)

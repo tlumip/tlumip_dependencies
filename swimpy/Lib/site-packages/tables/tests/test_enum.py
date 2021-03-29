@@ -11,7 +11,6 @@
 ########################################################################
 
 """Test module for enumerated types under PyTables."""
-from __future__ import absolute_import
 
 import operator
 import itertools
@@ -20,7 +19,6 @@ import tables
 from tables.tests import common
 from tables.tests.common import unittest
 from tables.tests.common import PyTablesTestCase as TestCase
-from six.moves import range
 
 
 class CreateColTestCase(TestCase):
@@ -102,7 +100,7 @@ class CreateColTestCase(TestCase):
             template % ', '.join(items) for items in itertools.permutations(
                 ("'blue': 2", "'green': 1", "'red': 0"))
         ]
-        self.assertTrue(repr(enumcol) in permitations)
+        self.assertIn(repr(enumcol), permitations)
 
     def test99a_nonIntEnum(self):
         """Describing an enumerated column of floats (not implemented)."""

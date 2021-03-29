@@ -1,8 +1,8 @@
-prefix=C:/Program Files/Anaconda2/envs/swim/Library
-exec_prefix=C:/Program Files/Anaconda2/envs/swim/Library
-libdir=C:/Program Files/Anaconda2/envs/swim/Library/lib
-sharedlibdir=C:/Program Files/Anaconda2/envs/swim/Library/lib
-includedir=C:/Program Files/Anaconda2/envs/swim/Library/include
+prefix=D:/Projects/Clients/odot/SWIM_WOC7/Tasks/Task_python3_setup/swimpy/Library
+exec_prefix=D:/Projects/Clients/odot/SWIM_WOC7/Tasks/Task_python3_setup/swimpy/Library
+libdir=D:/Projects/Clients/odot/SWIM_WOC7/Tasks/Task_python3_setup/swimpy/Library/lib
+sharedlibdir=D:/Projects/Clients/odot/SWIM_WOC7/Tasks/Task_python3_setup/swimpy/Library/lib
+includedir=D:/Projects/Clients/odot/SWIM_WOC7/Tasks/Task_python3_setup/swimpy/Library/include
 
 Name: zlib
 Description: zlib compression library

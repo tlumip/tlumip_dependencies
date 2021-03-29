@@ -11,9 +11,7 @@
 ########################################################################
 
 """Utilities to be used mainly by the Index class."""
-from __future__ import absolute_import
 
-import six
 import sys
 import math
 import numpy
@@ -399,12 +397,9 @@ def string_next_after(x, direction, itemsize):
     padsize = itemsize - len(x)
     if padsize > 0:
         x += b"\x00" * padsize
-    if sys.version_info[0] < 3:
-        xlist = list(x)
-    else:
-        # int.to_bytes is not available in Python < 3.2
-        # xlist = [i.to_bytes(1, sys.byteorder) for i in x]
-        xlist = [bytes([i]) for i in x]
+    # int.to_bytes is not available in Python < 3.2
+    # xlist = [i.to_bytes(1, sys.byteorder) for i in x]
+    xlist = [bytes([i]) for i in x]
     xlist.reverse()
     i = 0
     if direction > 0:
@@ -472,7 +467,7 @@ def nextafter(x, direction, dtype, itemsize):
     direction."""
 
     assert direction in [-1, 0, +1]
-    assert dtype.kind == "S" or type(x) in (bool, float) + six.integer_types
+    assert dtype.kind == "S" or type(x) in (bool, float, int)
 
     if direction == 0:
         return x

@@ -12,8 +12,6 @@
 
 """Unit test for the Time datatypes."""
 
-from __future__ import print_function
-from __future__ import absolute_import
 
 import numpy
 
@@ -22,7 +20,6 @@ from tables.tests import common
 from tables.tests.common import allequal
 from tables.tests.common import unittest, test_filename
 from tables.tests.common import PyTablesTestCase as TestCase
-from six.moves import range
 
 
 class LeafCreationTestCase(common.TempFileMixin, TestCase):
@@ -493,7 +490,7 @@ class BigEndianTestCase(TestCase):
         # Check the written data.
         tbl = self.h5file.root.tbl
         dummy = tbl.cols.nested.t64[:]
-        self.assertTrue(dummy is not None)
+        self.assertIsNotNone(dummy)
         t64 = tbl.cols.nested.t64[:]
 
         # Generate the expected Time64 array.

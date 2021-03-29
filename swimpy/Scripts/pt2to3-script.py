@@ -1,5 +1,10 @@
-if __name__ == '__main__':
-    import sys
-    import tables.scripts.pt2to3
 
-    sys.exit(tables.scripts.pt2to3.main())
+# -*- coding: utf-8 -*-
+import re
+import sys
+
+from tables.scripts.pt2to3 import main
+
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
+    sys.exit(main())

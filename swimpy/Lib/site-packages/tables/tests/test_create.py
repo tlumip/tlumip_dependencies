@@ -11,8 +11,6 @@ It also checks:
 
 """
 
-from __future__ import print_function
-from __future__ import absolute_import
 import os
 import sys
 import hashlib
@@ -33,7 +31,6 @@ from tables.utils import quantize
 from tables.tests import common
 from tables.tests.common import unittest, hdf5_version, blosc_version
 from tables.tests.common import PyTablesTestCase as TestCase
-from six.moves import range
 
 
 
@@ -71,10 +68,10 @@ class CreateTestCase(common.TempFileMixin, TestCase):
     def test00_isClass(self):
         """Testing table creation."""
 
-        self.assertTrue(isinstance(self.table, Table))
-        self.assertTrue(isinstance(self.array, Array))
-        self.assertTrue(isinstance(self.array, Leaf))
-        self.assertTrue(isinstance(self.group, Group))
+        self.assertIsInstance(self.table, Table)
+        self.assertIsInstance(self.array, Array)
+        self.assertIsInstance(self.array, Leaf)
+        self.assertIsInstance(self.group, Group)
 
     def test01_overwriteNode(self):
         """Checking protection against node overwriting."""
@@ -234,7 +231,7 @@ class CreateTestCase(common.TempFileMixin, TestCase):
         # Now, create a table with this record object
         # This way of creating node objects has been deprecated
         table = Table(recordDict, "MetaRecord instance")
-        self.assertTrue(table is not None)
+        self.assertIsNotNone(table)
 
         # Attach the table to object tree
         # Here, ValueError should be raised!
@@ -688,7 +685,7 @@ class FiltersCaseBloscBitShuffle(FiltersTreeTestCase):
     filters = Filters(shuffle=False, complevel=1, complib="blosc:blosclz")
     gfilters = Filters(complevel=5, shuffle=False, bitshuffle=True, complib="blosc:blosclz")
     open_kwargs = dict(filters=filters)
-    print("version:", tables.which_lib_version("blosc")[1])
+    # print("version:", tables.which_lib_version("blosc")[1])
 
 
 class CopyGroupTestCase(common.TempFileMixin, TestCase):
@@ -1551,10 +1548,7 @@ class FilterTestCase(TestCase):
 
     @staticmethod
     def _hexl(n):
-        if sys.version_info[0] > 2:
-            return hex(int(n))
-        else:
-            return hex(int(n)).rstrip('L')
+        return hex(int(n))
 
     def test_filter_pack_01(self):
         filter_ = Filters()
@@ -1624,7 +1618,7 @@ class DefaultDriverTestCase(common.TempFileMixin, TestCase):
         self.assertTrue(os.path.isfile(self.h5fname))
 
     def test_newFile(self):
-        self.assertTrue(isinstance(self.h5file, tables.File))
+        self.assertIsInstance(self.h5file, tables.File)
         self.assertIsFile()
 
     def test_readFile(self):
@@ -1643,12 +1637,12 @@ class DefaultDriverTestCase(common.TempFileMixin, TestCase):
 
         self.assertEqual(self.h5file.get_node_attr(root, "testattr"), 41)
 
-        self.assertTrue(isinstance(root.array, tables.Array))
+        self.assertIsInstance(root.array, tables.Array)
         self.assertEqual(root.array._v_title, "array")
 
-        self.assertTrue(isinstance(root.table, tables.Table))
+        self.assertIsInstance(root.table, tables.Table)
         self.assertEqual(root.table._v_title, "table")
-        self.assertTrue("var1" in root.table.colnames)
+        self.assertIn("var1", root.table.colnames)
         self.assertEqual(root.table.cols.var1.dtype, tables.IntCol().dtype)
 
     def test_openFileA(self):
@@ -1667,12 +1661,12 @@ class DefaultDriverTestCase(common.TempFileMixin, TestCase):
 
         self.assertEqual(self.h5file.get_node_attr(root, "testattr"), 41)
 
-        self.assertTrue(isinstance(root.array, tables.Array))
+        self.assertIsInstance(root.array, tables.Array)
         self.assertEqual(root.array._v_title, "array")
 
-        self.assertTrue(isinstance(root.table, tables.Table))
+        self.assertIsInstance(root.table, tables.Table)
         self.assertEqual(root.table._v_title, "table")
-        self.assertTrue("var1" in root.table.colnames)
+        self.assertIn("var1", root.table.colnames)
         self.assertEqual(root.table.cols.var1.dtype, tables.IntCol().dtype)
 
         # write new data
@@ -1690,20 +1684,20 @@ class DefaultDriverTestCase(common.TempFileMixin, TestCase):
         self.assertEqual(self.h5file.get_node_attr(root, "testattr"), 41)
         self.assertEqual(self.h5file.get_node_attr(root, "testattr2"), 42)
 
-        self.assertTrue(isinstance(root.array, tables.Array))
+        self.assertIsInstance(root.array, tables.Array)
         self.assertEqual(root.array._v_title, "array")
 
-        self.assertTrue(isinstance(root.array2, tables.Array))
+        self.assertIsInstance(root.array2, tables.Array)
         self.assertEqual(root.array2._v_title, "array2")
 
-        self.assertTrue(isinstance(root.table, tables.Table))
+        self.assertIsInstance(root.table, tables.Table)
         self.assertEqual(root.table._v_title, "table")
-        self.assertTrue("var1" in root.table.colnames)
+        self.assertIn("var1", root.table.colnames)
         self.assertEqual(root.table.cols.var1.dtype, tables.IntCol().dtype)
 
-        self.assertTrue(isinstance(root.table2, tables.Table))
+        self.assertIsInstance(root.table2, tables.Table)
         self.assertEqual(root.table2._v_title, "table2")
-        self.assertTrue("var2" in root.table2.colnames)
+        self.assertIn("var2", root.table2.colnames)
         self.assertEqual(root.table2.cols.var2.dtype, tables.FloatCol().dtype)
 
     def test_openFileRW(self):
@@ -1722,12 +1716,12 @@ class DefaultDriverTestCase(common.TempFileMixin, TestCase):
 
         self.assertEqual(self.h5file.get_node_attr(root, "testattr"), 41)
 
-        self.assertTrue(isinstance(root.array, tables.Array))
+        self.assertIsInstance(root.array, tables.Array)
         self.assertEqual(root.array._v_title, "array")
 
-        self.assertTrue(isinstance(root.table, tables.Table))
+        self.assertIsInstance(root.table, tables.Table)
         self.assertEqual(root.table._v_title, "table")
-        self.assertTrue("var1" in root.table.colnames)
+        self.assertIn("var1", root.table.colnames)
         self.assertEqual(root.table.cols.var1.dtype, tables.IntCol().dtype)
 
         # write new data
@@ -1744,20 +1738,20 @@ class DefaultDriverTestCase(common.TempFileMixin, TestCase):
         self.assertEqual(self.h5file.get_node_attr(root, "testattr"), 41)
         self.assertEqual(self.h5file.get_node_attr(root, "testattr2"), 42)
 
-        self.assertTrue(isinstance(root.array, tables.Array))
+        self.assertIsInstance(root.array, tables.Array)
         self.assertEqual(root.array._v_title, "array")
 
-        self.assertTrue(isinstance(root.array2, tables.Array))
+        self.assertIsInstance(root.array2, tables.Array)
         self.assertEqual(root.array2._v_title, "array2")
 
-        self.assertTrue(isinstance(root.table, tables.Table))
+        self.assertIsInstance(root.table, tables.Table)
         self.assertEqual(root.table._v_title, "table")
-        self.assertTrue("var1" in root.table.colnames)
+        self.assertIn("var1", root.table.colnames)
         self.assertEqual(root.table.cols.var1.dtype, tables.IntCol().dtype)
 
-        self.assertTrue(isinstance(root.table2, tables.Table))
+        self.assertIsInstance(root.table2, tables.Table)
         self.assertEqual(root.table2._v_title, "table2")
-        self.assertTrue("var2" in root.table2.colnames)
+        self.assertIn("var2", root.table2.colnames)
         self.assertEqual(root.table2.cols.var2.dtype, tables.FloatCol().dtype)
 
 
@@ -1768,12 +1762,8 @@ class Sec2DriverTestCase(DefaultDriverTestCase):
 
     def test_get_file_image(self):
         image = self.h5file.get_file_image()
-        self.assertTrue(len(image) > 0)
-        if sys.version_info[0] < 3:
-            self.assertEqual([ord(i) for i in image[
-                             :4]], [137, 72, 68, 70])
-        else:
-            self.assertEqual([i for i in image[:4]], [137, 72, 68, 70])
+        self.assertGreater(len(image), 0)
+        self.assertEqual([i for i in image[:4]], [137, 72, 68, 70])
 
 
 @unittest.skipIf(hdf5_version < "1.8.9", "requires HDF5 >= 1.8,9")
@@ -1783,12 +1773,8 @@ class StdioDriverTestCase(DefaultDriverTestCase):
 
     def test_get_file_image(self):
         image = self.h5file.get_file_image()
-        self.assertTrue(len(image) > 0)
-        if sys.version_info[0] < 3:
-            self.assertEqual([ord(i) for i in image[
-                             :4]], [137, 72, 68, 70])
-        else:
-            self.assertEqual([i for i in image[:4]], [137, 72, 68, 70])
+        self.assertGreater(len(image), 0)
+        self.assertEqual([i for i in image[:4]], [137, 72, 68, 70])
 
 
 @unittest.skipIf(hdf5_version < "1.8.9", "requires HDF5 >= 1.8,9")
@@ -1798,12 +1784,8 @@ class CoreDriverTestCase(DefaultDriverTestCase):
 
     def test_get_file_image(self):
         image = self.h5file.get_file_image()
-        self.assertTrue(len(image) > 0)
-        if sys.version_info[0] < 3:
-            self.assertEqual([ord(i) for i in image[
-                             :4]], [137, 72, 68, 70])
-        else:
-            self.assertEqual([i for i in image[:4]], [137, 72, 68, 70])
+        self.assertGreater(len(image), 0)
+        self.assertEqual([i for i in image[:4]], [137, 72, 68, 70])
 
 
 class CoreDriverNoBackingStoreTestCase(TestCase):
@@ -1863,12 +1845,12 @@ class CoreDriverNoBackingStoreTestCase(TestCase):
 
         self.assertEqual(self.h5file.get_node_attr(root, "testattr"), 41)
 
-        self.assertTrue(isinstance(root.array, tables.Array))
+        self.assertIsInstance(root.array, tables.Array)
         self.assertEqual(root.array._v_title, "array")
 
-        self.assertTrue(isinstance(root.table, tables.Table))
+        self.assertIsInstance(root.table, tables.Table)
         self.assertEqual(root.table._v_title, "table")
-        self.assertTrue("var1" in root.table.colnames)
+        self.assertIn("var1", root.table.colnames)
         self.assertEqual(root.table.cols.var1.dtype, tables.IntCol().dtype)
 
         self.h5file.close()     # flush
@@ -1890,12 +1872,12 @@ class CoreDriverNoBackingStoreTestCase(TestCase):
 
         self.assertEqual(self.h5file.get_node_attr(root, "testattr"), 41)
 
-        self.assertTrue(isinstance(root.array, tables.Array))
+        self.assertIsInstance(root.array, tables.Array)
         self.assertEqual(root.array._v_title, "array")
 
-        self.assertTrue(isinstance(root.table, tables.Table))
+        self.assertIsInstance(root.table, tables.Table)
         self.assertEqual(root.table._v_title, "table")
-        self.assertTrue("var1" in root.table.colnames)
+        self.assertIn("var1", root.table.colnames)
         self.assertEqual(root.table.cols.var1.dtype, tables.IntCol().dtype)
 
         self.h5file.close()     # flush
@@ -1937,12 +1919,12 @@ class CoreDriverNoBackingStoreTestCase(TestCase):
 
         self.assertEqual(self.h5file.get_node_attr(root, "testattr"), 41)
 
-        self.assertTrue(isinstance(root.array, tables.Array))
+        self.assertIsInstance(root.array, tables.Array)
         self.assertEqual(root.array._v_title, "array")
 
-        self.assertTrue(isinstance(root.table, tables.Table))
+        self.assertIsInstance(root.table, tables.Table)
         self.assertEqual(root.table._v_title, "table")
-        self.assertTrue("var1" in root.table.colnames)
+        self.assertIn("var1", root.table.colnames)
         self.assertEqual(root.table.cols.var1.dtype, tables.IntCol().dtype)
 
     def _get_digest(self, filename):
@@ -1975,12 +1957,12 @@ class CoreDriverNoBackingStoreTestCase(TestCase):
 
         self.assertEqual(self.h5file.get_node_attr(root, "testattr"), 41)
 
-        self.assertTrue(isinstance(root.array, tables.Array))
+        self.assertIsInstance(root.array, tables.Array)
         self.assertEqual(root.array._v_title, "array")
 
-        self.assertTrue(isinstance(root.table, tables.Table))
+        self.assertIsInstance(root.table, tables.Table)
         self.assertEqual(root.table._v_title, "table")
-        self.assertTrue("var1" in root.table.colnames)
+        self.assertIn("var1", root.table.colnames)
         self.assertEqual(root.table.cols.var1.dtype, tables.IntCol().dtype)
 
         # write new data
@@ -2011,12 +1993,12 @@ class CoreDriverNoBackingStoreTestCase(TestCase):
 
         self.assertEqual(self.h5file.get_node_attr(root, "testattr"), 41)
 
-        self.assertTrue(isinstance(root.array, tables.Array))
+        self.assertIsInstance(root.array, tables.Array)
         self.assertEqual(root.array._v_title, "array")
 
-        self.assertTrue(isinstance(root.table, tables.Table))
+        self.assertIsInstance(root.table, tables.Table)
         self.assertEqual(root.table._v_title, "table")
-        self.assertTrue("var1" in root.table.colnames)
+        self.assertIn("var1", root.table.colnames)
         self.assertEqual(root.table.cols.var1.dtype, tables.IntCol().dtype)
 
         # write new data
@@ -2043,12 +2025,8 @@ class CoreDriverNoBackingStoreTestCase(TestCase):
 
         image = self.h5file.get_file_image()
 
-        self.assertTrue(len(image) > 0)
-        if sys.version_info[0] < 3:
-            self.assertEqual([ord(i) for i in image[
-                             :4]], [137, 72, 68, 70])
-        else:
-            self.assertEqual([i for i in image[:4]], [137, 72, 68, 70])
+        self.assertGreater(len(image), 0)
+        self.assertEqual([i for i in image[:4]], [137, 72, 68, 70])
 
 
 class SplitDriverTestCase(DefaultDriverTestCase):
@@ -2213,20 +2191,14 @@ class InMemoryCoreDriverTestCase(TestCase):
 
     def test_newFileW(self):
         image = self._create_image(self.h5fname, mode='w')
-        self.assertTrue(len(image) > 0)
-        if sys.version_info[0] < 3:
-            self.assertEqual([ord(i) for i in image[:4]], [137, 72, 68, 70])
-        else:
-            self.assertEqual([i for i in image[:4]], [137, 72, 68, 70])
+        self.assertGreater(len(image), 0)
+        self.assertEqual([i for i in image[:4]], [137, 72, 68, 70])
         self.assertFalse(os.path.exists(self.h5fname))
 
     def test_newFileA(self):
         image = self._create_image(self.h5fname, mode='a')
-        self.assertTrue(len(image) > 0)
-        if sys.version_info[0] < 3:
-            self.assertEqual([ord(i) for i in image[:4]], [137, 72, 68, 70])
-        else:
-            self.assertEqual([i for i in image[:4]], [137, 72, 68, 70])
+        self.assertGreater(len(image), 0)
+        self.assertEqual([i for i in image[:4]], [137, 72, 68, 70])
         self.assertFalse(os.path.exists(self.h5fname))
 
     def test_openFileR(self):
@@ -2446,7 +2418,7 @@ class InMemoryCoreDriverTestCase(TestCase):
         # ensure that the __str__ method works even if there is no phisical
         # file on disk (in which case the os.stat operation for date retrieval
         # fails)
-        self.assertTrue(str(self.h5file) is not None)
+        self.assertIsNotNone(str(self.h5file))
 
         self.h5file.close()
         self.assertFalse(os.path.exists(self.h5fname))
