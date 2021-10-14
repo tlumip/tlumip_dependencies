@@ -1,18 +1,16 @@
 Package: swimctr
 Type: Package
-Title: Oregon SWIM v2.5 Commercial Transport (CT) Model
-Version: 1.0
+Title: Oregon SWIM v3.0pre Commercial Transport (CT) Model
+Version: 3.0
 Author: Rick Donnelly
-Maintainer: Rick Donnelly <donnellyr@pbworld.com>
+Maintainer: Rick Donnelly <rick.donnelly@wsp.com>
 Description: A library of functions for building the commercial transport (CT)
     model within the Oregon DOT's Statewide Integrated Model (SWIM) Version 2.x.
-Depends: R (>= 3.3.1)
-Imports: tidyverse (>= 1.0), doParallel (>= 1.0.8), omxr
+Depends: R (>= 3.3.2)
+Imports: tidyverse (>= 1.3), doParallel (>= 1.0.10)
 License: None
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
 Remotes: gregmacfarlane/omxr
-NeedsCompilation: no
-Packaged: 2020-11-03 20:40:53 UTC; aditya.gore
-Built: R 3.3.2; ; 2020-11-03 20:41:14 UTC; windows
+Built: R 3.3.2; ; 2021-10-05 12:27:17 UTC; windows

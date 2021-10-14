@@ -1,14 +1,13 @@
 allocate_faf_to_zones   Allocate FAF daily truck flows to traffic
                         analysis zones
-create_annual_faf_truckloads
-                        Generate annual truckload equivalents using
-                        FAF3 Traffic Analysis process
+create_annual_truckload_equivalents
+                        Generate annual truckload equivalents using CVS
+                        and FAF4 truck factors
 create_makeuse_coefficients
-                        Create input-output make and use cofficients
+                        Create input-output make and use coefficients
                         from PECAS AA accounts
 create_synthetic_firms
                         Create synthetic pseudo-firms
-ct_msg                  Print a ct message
 export_trip_list        Export local and inter-regional trip records in
                         a combined trip list file
 get_runtime_parameters
@@ -30,6 +29,8 @@ sample_daily_faf_truckloads
 sample_local_truck_destinations
                         Simple destination choice model for local
                         (internal) truck trips
+self_identify           Return the identity of the calling function and
+                        date string
 summarize_zonal_households
                         Summarize number of households per traffic
                         analysis zone
