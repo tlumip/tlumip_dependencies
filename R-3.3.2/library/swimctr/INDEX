@@ -1,5 +1,8 @@
 allocate_faf_to_zones   Allocate FAF daily truck flows to traffic
                         analysis zones
+append_weighted_distances
+                        Added weighted distances to FAF 5.x+ data
+                        without it
 create_annual_truckload_equivalents
                         Generate annual truckload equivalents using CVS
                         and FAF4 truck factors
@@ -13,19 +16,27 @@ export_trip_list        Export local and inter-regional trip records in
 get_runtime_parameters
                         Read the runtime parameters file and store them
                         in environment
+list_tibble_contents    List the class and range of values in each
+                        column of a tibble
+load_annual_faf_data    Load preformatted and processed FAF data for
+                        the target year
+load_tabular_data       Read tabular data from an ambiguous data source
 local_truck_generation
                         Generate local truck trips (tour segments) from
                         pseudo-firms
 percent                 Calculate the percent value of a vector
                         (stunning this isn't built-in to R)
-preprocess_faf4_database
+preprocess_faf_database
                         Transform FAF flow database distributed by FHWA
                         into format for target year
 read_skim_matrices      Convert time and distance skim matrices in OMX
                         format to data frame format
-sample_daily_faf_truckloads
-                        Sample daily truck trips from annual FAF flow
-                        database
+recode_external_faf_regions
+                        Recode FAF regions beyond the SWIM halo to SWIM
+                        external zones
+sample_daily_faf_flows
+                        Sample daily FAF flows from annual truckload
+                        equivalents
 sample_local_truck_destinations
                         Simple destination choice model for local
                         (internal) truck trips
